@@ -47,6 +47,7 @@ df.head(1)
 mergedlist = []
 for i in df['Tags'].dropna().str.split(","):
    mergedlist.extend(i)
+
 tags = sorted(set(mergedlist))
 
 
@@ -63,9 +64,9 @@ just_dummies = pd.get_dummies(df['Language'])
 df = pd.concat([df, just_dummies], axis=1) 
 
 
-REMOVE_COLUMNS = [ 'Username','Repository Name','Description','Last Update Date','Language','Number of Stars','Tags','Url']
+COLUMNS_TO_REMOVE_LIST = [ 'Username','Repository Name','Description','Last Update Date','Language','Number of Stars','Tags','Url']
 
-for column in REMOVE_COLUMNS: del df[column]
+for column in COLUMNS_TO_REMOVE_LIST: del df[column]
 
 
 
@@ -73,11 +74,6 @@ from scipy.spatial import distance
 df.to_csv("salida.csv")
 distance.euclidean(df[1:2],df[2:3])
 
-
-from scipy.spatial.distance import pdist, squareform
-
-dist = pdist(df, 'euclidean')
-df_dist = pd.DataFrame(squareform(dist))
 
 for row in df_dist.iterrows():
     i, data = row
