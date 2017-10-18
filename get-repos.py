@@ -74,6 +74,8 @@ from scipy.spatial import distance
 df.to_csv("salida.csv")
 distance.euclidean(df[1:2],df[2:3])
 
+from scipy.spatial.distance import squareform, pdist
+df_dist = pd.DataFrame(squareform(pdist(df)))
 
 for row in df_dist.iterrows():
     i, data = row
