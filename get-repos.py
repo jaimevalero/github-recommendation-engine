@@ -38,10 +38,18 @@ repo_topics_flatlist = [item for sublist in repo_topics for item in sublist]
 
 # Load csv
 import pandas as pd
-df_backup = df = pd.read_csv('TopStaredRepositories.csv')
-df['Tags'] = df['Tags'].fillna('')
+df = pd.read_csv('TopStaredRepositories.csv')
+df = df.dropna(subset=['Tags'], how='all')
+df['Url'] = "http://github.com/" + df_backup['Username'] + "/" +df_backup['Repository Name']
+df['Tags'] = df['Tags'] + ","
+df_backup = df
 
-df.head(1)
+df.to_csv("clean_TopStaredRepositories.csv")
+df        = pd.read_csv('clean_TopStaredRepositories.csv')
+df_backup = pd.read_csv('clean_TopStaredRepositories.csv')
+
+
+
 
 # Get Tags
 mergedlist = []
@@ -51,12 +59,11 @@ for i in df['Tags'].dropna().str.split(","):
 tags = sorted(set(mergedlist))
 
 
-#tag = 'activejob'
 
 for tag in tags:
   tag
   df[tag] = 0 
-  df.loc[df['Tags'].str.contains(tag),tag] = 1
+  df.loc[df['Tags'].str.contains(tag+","),tag] = 1
 
 
 just_dummies = pd.get_dummies(df['Language'])
@@ -64,8 +71,7 @@ just_dummies = pd.get_dummies(df['Language'])
 df = pd.concat([df, just_dummies], axis=1) 
 
 
-COLUMNS_TO_REMOVE_LIST = [ 'Username','Repository Name','Description','Last Update Date','Language','Number of Stars','Tags','Url']
-
+COLUMNS_TO_REMOVE_LIST = [ 'Username','Repository Name','Description','Last Update Date','Language','Number of Stars','Tags','Url', 'Unnamed: 0']
 for column in COLUMNS_TO_REMOVE_LIST: del df[column]
 
 
@@ -75,17 +81,37 @@ df.to_csv("salida.csv")
 distance.euclidean(df[1:2],df[2:3])
 
 from scipy.spatial.distance import squareform, pdist
-df_dist = pd.DataFrame(squareform(pdist(df)))
+#df_dist = pd.DataFrame(squareform(pdist(df)))
 
-for row in df_dist.iterrows():
-    i, data = row
-    kk = df_dist
-    kk.loc[kk[i] == 0, i] = 1000
-    min = kk[i].min()
-    similar =kk.loc[kk[i] == min].index[0]
-    print ( min, df_backup.Url.loc[i] ,df_backup.Url.loc[similar]) 
-#tags
-#['1-wire', '2d', '3d', '3d-engine', '3d-game-engine', 'accessibility', 'accordion', 'acme', 'acme-client', 'activeadmin', 'activejob', 'activerecord', 'activity', 'activity-stream' ]
+df_dist.to_csv("distances.csv")
+
+#for row in df_dist.iterrows():
+#    i, data = row
+#    print(i,df_backup.Url.loc[i])
+#    kk = df_dist
+#    kk.loc[kk[i] == 0, i] = 1000
+#    min = kk[i].min()
+#    similar =kk.loc[kk[i] == min].index[0]
+#    print ( i,similar )
+#    print ( min, df_backup.Url.loc[i] ,df_backup.Url.loc[similar]) 
+
+
+repos = list(df_backup['Username'] + "/" +df_backup['Repository Name'])
+from scipy.spatial.distance import squareform
+res = pdist(df, 'euclidean')
+squareform(res)
+df_dist = pd.DataFrame(squareform(res), index=repos, columns= repos)
+df_dist.to_csv("distances.csv")
+
+
+
+for i in df_dist.columns :
+  #i='atom/atom'
+  df_dist.loc[df_dist[i] == 0, i] = 1000
+  min = df_dist[i].min()
+  #similar =df_dist.loc[df_dist[i] == min].index[0]
+  kk = df_dist[i]
+  print ( kk[df_dist[i] == min].index, i, min)
 
 # Freq 
 {i:repo_languages.count(i) for i in set(repo_languages)}
