@@ -33,13 +33,14 @@ def Load_Starred_Repos() :
     df_backup = df.copy(deep=True)
     return df, df_backup
 
+
 def Load_User_Repos(github_user):
     PERSONAL_TOKEN = "ac995cdbc4e65c85609434538bd8a135d4c933d9"
     url     = 'https://api.github.com/users/%s/repos' % github_user
     headers = { 'content-type': 'application/json',
                 'Accept-Charset': 'UTF-8' ,
                 'Accept' : 'application/vnd.github.mercy-preview+json' }
-    r                = requests.get(url,  headers=headers , auth=HTTPBasicAuth('jaimevalero', PERSONAL_TOKEN))
+    r                = requests.get(url,  headers=headers , auth=HTTPBasicAuth("jaimevalero", PERSONAL_TOKEN))
     return r.json()
 
 def Generate_Tag_Matrix(df):
@@ -156,13 +157,14 @@ def Get_Closest_Repo(repo):
   return result_array
 
 #MAIN
+github_user = sys.argv[1]
 start = time.time()
 # run your code
 
 os.chdir("/Users/jaimevalerodebernabe/git/github-recommendation-engine")
 
 # Load Data and user Repos
-json_response = Load_User_Repos(github_user="jaimevalero")
+json_response = Load_User_Repos(github_user)
 
 print ((start - time.time(),"Datos Cargados"))
 
