@@ -18,7 +18,7 @@ github_user="jaimevalero"
 
 url     = 'https://api.github.com/users/%s/repos' % github_user
 headers = { 'content-type': 'application/json',
-            'Accept-Charset': 'UTF-8' , 
+            'Accept-Charset': 'UTF-8' ,
             'Accept' : 'application/vnd.github.mercy-preview+json' }
 
 r                = requests.get(url,  headers=headers , auth=HTTPBasicAuth('jaimevalero', PERSONAL_TOKEN))
@@ -26,15 +26,30 @@ json_response    = r.json()
 
 # Extract data
 repos_names      = pyjq.all(".[] | .name"    ,     json_response )
-repo_languages   = pyjq.all(".[] | .language",     json_response )
-repo_description = pyjq.all(".[] | .description",  json_response )
-repo_topics      = pyjq.all(".[] | .topics",       json_response )
+repos_languages   = pyjq.all(".[] | .language",     json_response )
+repos_description = pyjq.all(".[] | .description",  json_response )
+repos_topics      = pyjq.all(".[] | .topics",       json_response )
 
-# Flat multi dimensional array
-repo_topics_flatlist = [item for sublist in repo_topics for item in sublist]
-#['python', 'scikitlearn-machine-learning']
- 
-#['ansible-swarm-playbook', 'Cfish', 'cifras_y_letras-test', 'epg-icinga', 'itop-docker', 'itop-utilities', 'jaimevalero78.github.io', 'jupyter-learning', 'learning-machine-learning', 'openstack-monitoring', 'openstack-utilities', 'shell-microservice-exposer', 'techradar', 'test-branching']
+i=1
+
+repo_names       = pyjq.all(".[%s] | .name"        %i,  json_response )
+repo_languages   = pyjq.all(".[%s] | .language"    %i,  json_response )
+repo_description = pyjq.all(".[%s] | .description" %i,  json_response )
+repo_topics      = pyjq.all(".[%s] | .topics"      %i,  json_response )
+print (repo_names , repo_languages, repo_description , repo_topics)
+
+for i in repo_languages                 : df[i].loc[new_repo_index] = 1
+for i in repo_topics                    : df[i].loc[new_repo_index] = 1
+for i in repo_description[0].split()    : df[i].loc[new_repo_index] = 1
+
+new_repo_index = df.index.max() + 1
+
+for i in df.columns :
+  if df[i].loc[new_repo_index] > 0 :
+    print ( i , df[i].loc[new_repo_index] )
+
+
+
 
 # Load csv
 import pandas as pd
@@ -42,39 +57,14 @@ df = pd.read_csv('TopStaredRepositories.csv')
 df = df.dropna(subset=['Tags'], how='all')
 df['Url'] = "http://github.com/" + df_backup['Username'] + "/" +df_backup['Repository Name']
 df['Tags'] = df['Tags'] + ","
-df_backup = df
+df.columns = df.columns.str.lower()
 
-df.to_csv("clean_TopStaredRepositories.csv")
-df        = pd.read_csv('clean_TopStaredRepositories.csv')
-df_backup = pd.read_csv('clean_TopStaredRepositories.csv')
+df_backup = df
 
 
 
 
 # Get Tags
-mergedlist = []
-for i in df['Tags'].dropna().str.split(","):
-   mergedlist.extend(i)
-
-tags = sorted(set(mergedlist))
-
-
-
-for tag in tags:
-  tag
-  df[tag] = 0 
-  df.loc[df['Tags'].str.contains(tag+","),tag] = 1
-
-
-just_dummies = pd.get_dummies(df['Language'])
-
-df = pd.concat([df, just_dummies], axis=1) 
-
-
-COLUMNS_TO_REMOVE_LIST = [ 'Username','Repository Name','Description','Last Update Date','Language','Number of Stars','Tags','Url', 'Unnamed: 0']
-for column in COLUMNS_TO_REMOVE_LIST: del df[column]
-
-
 
 from scipy.spatial import distance
 df.to_csv("salida.csv")
@@ -93,10 +83,12 @@ df_dist.to_csv("distances.csv")
 #    min = kk[i].min()
 #    similar =kk.loc[kk[i] == min].index[0]
 #    print ( i,similar )
-#    print ( min, df_backup.Url.loc[i] ,df_backup.Url.loc[similar]) 
+#    print ( min, df_backup.Url.loc[i] ,df_backup.Url.loc[similar])
 
 
 repos = list(df_backup['Username'] + "/" +df_backup['Repository Name'])
+repos.extend( repo_names)
+
 from scipy.spatial.distance import squareform
 res = pdist(df, 'euclidean')
 squareform(res)
@@ -113,7 +105,14 @@ for i in df_dist.columns :
   kk = df_dist[i]
   print ( kk[df_dist[i] == min].index, i, min)
 
-# Freq 
+
+#df_dist.loc[df_dist[i] == 0, i] = 1000
+#min = df_dist[i].min()
+#kk = df_dist[i]
+#print ( kk[df_dist[i] == min].index, i, min)
+
+
+# Freq
 {i:repo_languages.count(i) for i in set(repo_languages)}
 #{'C': 1, 'CSS': 1, 'JavaScript': 1, 'Shell': 6, 'Jupyter Notebook': 1, None: 1, 'Python': 3}
 
@@ -133,8 +132,15 @@ for i, row in df.fillna('').iterrows():
   tags_list.append( {} if len(resul) == 0 else resul )
   print (tags_list)
 
-frame=pd.DataFrame(tags_list, columns=['Tags']) 
+frame=pd.DataFrame(tags_list, columns=['Tags'])
 
 
 for key in d:
     print (key, 'corresponds to', d[key])
+
+
+
+pyjq.all(".[] | .name"        ,  json_response )
+pyjq.all(".[] | .language"    ,  json_response )
+pyjq.all(".[] | .description" ,  json_response )
+pyjq.all(".[] | .topics"      ,  json_response )
