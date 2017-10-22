@@ -6,3 +6,4 @@ Tag_Matrix.csv
 clean_TopStaredRepositories.csv
 *.pyc
 nohup.out
+*pyc
