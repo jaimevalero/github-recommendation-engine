@@ -1,0 +1,256 @@
+[2017-10-21 16:37:47 +0200] [36961] [DEBUG] Current configuration:
+  config: None
+  bind: ['0.0.0.0:5000']
+  backlog: 2048
+  workers: 6
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  chdir: /Users/jaimevalerodebernabe/git/github-recommendation-engine
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: None
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: -
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: github-recommendation-engine:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x1081e8400>
+  on_reload: <function OnReload.on_reload at 0x1081e8598>
+  when_ready: <function WhenReady.when_ready at 0x1081e8730>
+  pre_fork: <function Prefork.pre_fork at 0x1081e88c8>
+  post_fork: <function Postfork.post_fork at 0x1081e8a60>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x1081e8bf8>
+  worker_int: <function WorkerInt.worker_int at 0x1081e8d90>
+  worker_abort: <function WorkerAbort.worker_abort at 0x1081e8f28>
+  pre_exec: <function PreExec.pre_exec at 0x1081f0158>
+  pre_request: <function PreRequest.pre_request at 0x1081f02f0>
+  post_request: <function PostRequest.post_request at 0x1081f0400>
+  child_exit: <function ChildExit.child_exit at 0x1081f0598>
+  worker_exit: <function WorkerExit.worker_exit at 0x1081f0730>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x1081f08c8>
+  on_exit: <function OnExit.on_exit at 0x1081f0a60>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: TLSv1
+  raw_paste_global_conf: []
+[2017-10-21 16:37:47 +0200] [36961] [INFO] Starting gunicorn 19.7.1
+[2017-10-21 16:37:47 +0200] [36961] [DEBUG] Arbiter booted
+[2017-10-21 16:37:47 +0200] [36961] [INFO] Listening at: http://0.0.0.0:5000 (36961)
+[2017-10-21 16:37:47 +0200] [36961] [INFO] Using worker: sync
+[2017-10-21 16:37:47 +0200] [36966] [INFO] Booting worker with pid: 36966
+[2017-10-21 16:37:47 +0200] [36967] [INFO] Booting worker with pid: 36967
+[2017-10-21 16:37:47 +0200] [36966] [ERROR] invalid syntax (github-recommendation-engine.py, line 15)
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/Users/jaimevalerodebernabe/git/github-recommendation-engine/github-recommendation-engine.py", line 15
+    import api-ghr
+              ^
+SyntaxError: invalid syntax
+[2017-10-21 16:37:47 +0200] [36967] [ERROR] invalid syntax (github-recommendation-engine.py, line 15)
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/Users/jaimevalerodebernabe/git/github-recommendation-engine/github-recommendation-engine.py", line 15
+    import api-ghr
+              ^
+SyntaxError: invalid syntax
+[2017-10-21 16:37:47 +0200] [36966] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/Users/jaimevalerodebernabe/git/github-recommendation-engine/github-recommendation-engine.py", line 15
+    import api-ghr
+              ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 148, in load_wsgi
+    self.reloader.add_extra_file(exc_val.filename)
+AttributeError: 'NoneType' object has no attribute 'add_extra_file'
+[2017-10-21 16:37:47 +0200] [36967] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/Users/jaimevalerodebernabe/git/github-recommendation-engine/github-recommendation-engine.py", line 15
+    import api-ghr
+              ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 148, in load_wsgi
+    self.reloader.add_extra_file(exc_val.filename)
+AttributeError: 'NoneType' object has no attribute 'add_extra_file'
+[2017-10-21 16:37:47 +0200] [36966] [INFO] Worker exiting (pid: 36966)
+[2017-10-21 16:37:47 +0200] [36967] [INFO] Worker exiting (pid: 36967)
+[2017-10-21 16:37:47 +0200] [36968] [INFO] Booting worker with pid: 36968
+[2017-10-21 16:37:47 +0200] [36968] [ERROR] invalid syntax (github-recommendation-engine.py, line 15)
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/Users/jaimevalerodebernabe/git/github-recommendation-engine/github-recommendation-engine.py", line 15
+    import api-ghr
+              ^
+SyntaxError: invalid syntax
+[2017-10-21 16:37:47 +0200] [36968] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/Users/jaimevalerodebernabe/git/github-recommendation-engine/github-recommendation-engine.py", line 15
+    import api-ghr
+              ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/workers/base.py", line 148, in load_wsgi
+    self.reloader.add_extra_file(exc_val.filename)
+AttributeError: 'NoneType' object has no attribute 'add_extra_file'
+[2017-10-21 16:37:47 +0200] [36968] [INFO] Worker exiting (pid: 36968)
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 544, in manage_workers
+    self.spawn_workers()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 612, in spawn_workers
+    time.sleep(0.1 * random.random())
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 506, in reap_workers
+    def reap_workers(self):
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 524, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jaimevalerodebernabe/anaconda/bin/gunicorn", line 11, in <module>
+    sys.exit(run())
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 74, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 203, in run
+    super(Application, self).run()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 231, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 344, in halt
+    self.stop()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/Users/jaimevalerodebernabe/anaconda/lib/python3.6/site-packages/gunicorn/arbiter.py", line 524, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>

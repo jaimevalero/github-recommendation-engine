@@ -4,3 +4,5 @@ Enrich_Tag_Matrix.csv
 *.data
 Tag_Matrix.csv
 clean_TopStaredRepositories.csv
+*.pyc
+nohup.out
