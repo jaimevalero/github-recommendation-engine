@@ -143,7 +143,6 @@ def Generate_Distance_Matrix(df_backup, df, repo_names):
     # df_dist.to_csv("Distance_Matrix.csv")
     return df_dist
 
-
 def Get_Closest_Repo(df_dist,df_backup):
     result_array = []
     i = df_dist.columns[-1]
@@ -151,7 +150,7 @@ def Get_Closest_Repo(df_dist,df_backup):
     min = df_dist[i].min()
     kk = df_dist[i]
     print(kk[df_dist[i] == min].index, i, min)
-    for recomended_repo in (kk[df_dist[i] == min].index):
+    for recomended_repo in (kk[df_dist[i] == min].index[0:12]):
         description = df_backup.loc[df_backup['Url'] == (
             'http://github.com/%s' % recomended_repo), 'Description'].iloc[0]
 
@@ -160,7 +159,7 @@ def Get_Closest_Repo(df_dist,df_backup):
             "score": min,
             "user_repo_name": i,
             "recomended_repo_name": recomended_repo,
-            "recomended_repo_description": str(re.sub('<[^<]+?>', '', str(description)))   })
+            "recomended_repo_description": str(re.sub('<[^<]+?>', '', str(description))).replace('"','').replace("'","")   })
 
     return result_array
 
@@ -190,7 +189,7 @@ def Get_Recomended_Repos(github_user) :
     # For each repo
     num_repos = len(pyjq.all(".[] | .name",  json_response),)
     print(num_repos)
-    for i in range(2):
+    for i in range(num_repos):
 
         df, df_backup = Load_Starred_Repos()
 

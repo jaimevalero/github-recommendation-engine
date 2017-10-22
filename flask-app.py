@@ -3,15 +3,12 @@ import jinja2
 from jinja2.ext import with_
 import requests
 import json
-import csv
 import urllib
 import subprocess
 import os
-#import logging, logging.config, yaml
-#import webservices
-import os
 from flask import jsonify
 import pickle
+from flask import jsonify
 
 
 #import predict
@@ -43,9 +40,6 @@ def hello():
 @app.route('/views/css/<view>')
 @app.route('/views/<view>')
 def default_view(view):
-
-
-
     print("EXTATICO     " ,view)
 
     # Load Jinja environment
@@ -74,22 +68,20 @@ def default_view(view):
 
     resultados = dict([])
     busqueda = request.args.get('busqueda' , 'no_busqueda')
-    #size = request.args.get('size' , '15')
-    #logfile.info('%s] [%s] [%s' % (request.environ['REMOTE_ADDR'],view,busqueda))
 
     results = get_repos.Get_Recomended_Repos(busqueda)
-    config =  { "results" : results }
-    # Prework
+
+    for i, val in enumerate(results):
+      print ( val)
+      json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( val  ) )
 
 
-    resultados["config"  ]    = json.dumps( config  )
-
-    print("RESULTADOS" ,resultados["config"  ])
-
+    resultados["config"  ]    = json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( results  ) )
+    print(resultados)
 
     try :
        #salida = template.render( config     = resultados["config"]  )
-       return template.render( config     = resultados["config"]  )
+       return template.render( results     = results  )
 
 
     except Exception:
