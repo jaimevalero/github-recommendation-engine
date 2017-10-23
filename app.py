@@ -14,21 +14,9 @@ from flask import jsonify
 #import predict
 import  get_repos
 
-#from pymemcache.client.base import Client
-#client = Client(
-#    ('127.0.0.1', 11211)
-#)
-
-####### LOG
-#logging.config.dictConfig(yaml.load(open('logging.conf')))
-#logfile    = logging.getLogger('file')
-#logconsole = logging.getLogger('console')
-#logfile.debug("Debug FILE")
-#logconsole.debug("Debug CONSOLE")
-####### End of LOG
+#app = Flask(__name__,  static_url_path='/Users/jaimevalerodebernabe/git/github-recommendation-engine/views')
 
 app = Flask(__name__,  static_url_path='/Users/jaimevalerodebernabe/git/github-recommendation-engine/views')
-
 
 @app.route('/')
 def hello():
@@ -61,7 +49,7 @@ def default_view(view):
 
         #return app.send_static_file(("/Users/jaimevalerodebernabe/git/github-recommendation-engine/html/%s" % view))
 
-    templateLoader = jinja2.FileSystemLoader( searchpath=['/Users/jaimevalerodebernabe/git/github-recommendation-engine/views'] )
+    templateLoader = jinja2.FileSystemLoader( searchpath=['./views'] )
     templateEnv = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_'])
     template = templateEnv.get_template( view )
 
