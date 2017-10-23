@@ -32,7 +32,7 @@ def Load_Starred_Repos():
 
 def Load_User_Repos(github_user):
     PERSONAL_TOKEN = "ac995cdbc4e65c85609434538bd8a135d4c933d9"
-    url = 'https://api.github.com/users/%s/repos' % github_user
+    url = 'https://api.github.com/users/%s/repos?sort=updated' % github_user
     headers = {'content-type': 'application/json',
                'Accept-Charset': 'UTF-8',
                'Accept': 'application/vnd.github.mercy-preview+json'}
@@ -171,8 +171,8 @@ def Get_Recomended_Repos(github_user) :
 
 
 
-    if Path("/tmp/last_usr.data").exists():
-        with open(r"/tmp/last_usr.data", "rb") as input_file:
+    if Path("/tmp/last_usr.data-%s.data").exists():
+        with open(r"/tmp/last_usr.data-%s.data"  %github_user, "rb") as input_file:
             results = pickle.load(input_file)
         return results
 
@@ -215,8 +215,9 @@ def Get_Recomended_Repos(github_user) :
     #for i, val in enumerate(results):
     #    results[i]["recomended_repo_description"] = re.sub('<[^<]+?>', '', results[i]["recomended_repo_description"])
 
-    with open(r"/tmp/last_usr.data", "wb") as output_file:
-        pickle.dump(results, output_file)
+    if not Path("/tmp/last_usr.data-%s.data").exists():
+        with open(r"/tmp/last_usr.data-%s.data"  %github_user, "wb") as output_file:
+            pickle.dump(results, output_file)
     return results
      # All
 

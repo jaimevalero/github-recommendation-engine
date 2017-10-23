@@ -169,28 +169,30 @@ a:hover {
   <h1>Github recommendation</h1>
 
   <p>
-    2Inspired by  <a href="https://twitter.com/Eli_White">Eli White's</a> article <a href="http://eng.wealthfront.com/2015/06/implementing-netflix-redesign.html">Performant CSS Animations: Netflix Case Study</a>, his <a href="https://codepen.io/TheSavior/pen/LVeYBp">example pen</a>, and <a href="http://matthewjamestaylor.com/">Matt Taylor's</a> <a href="https://codepen.io/mattjamestaylor/pen/dodYPr">CSS-only version.</a>
+    Discover new github repositories, based on your own user profile.
   </p>
 <br>
 
 {% for group in results|groupby('user_repo_name') %}
-  user_ repo : {{group.grouper}}<br>
+  Similar to {{group.grouper}}
   <div class="row">
     <div class="row__inner">
       {% for item in group.list %}
-      <div class="tile" href="https://github/{item.recomended_repo_name}}">
-       {{item.recomended_repo_name}}
-        <div class="tile__media">
+      <a  href="https://github.com/{{item.recomended_repo_name}}">
+      <div class="tile">
+       {{item.recomended_repo_name|replace("/","<br>   ") }}
+
+        <div class="tile__media" >
           <img class="tile__img" src="http://www.iconsdb.com/icons/preview/white/github-10-xxl.png" alt="{{item.user_repo_name}}"  />
         </div>
         <div class="tile__details">
           <div class="tile__title">
-            {{item.recomended_repo_name}}<br>
-            {{item.recomended_repo_description|e}}<br>
+            <font color="gold">{{item.recomended_repo_description}}</font><br>
           </div>
         </div>
 
       </div>
+      </a>
       {% endfor %}
     </div>
   </div>
