@@ -179,7 +179,7 @@ def Get_Recomended_Repos(github_user) :
     start = time.time()
     # run your code
 
-    os.chdir("/Users/jaimevalerodebernabe/git/github-recommendation-engine")
+
 
     # Load Data and user Repos
     json_response = Load_User_Repos(github_user)
