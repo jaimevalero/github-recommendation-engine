@@ -73,7 +73,7 @@ def Generate_Tag_Matrix(df):
         # Remove columns not needed
         df.set_index(['Repository Name'])
         COLUMNS_TO_REMOVE_LIST = ['', 'Username', 'Repository Name', 'Description',
-                                  'Last Update Date', 'Language', 'Number of Stars', 'Tags', 'Url', 'Unnamed: 0']
+                                  'Last Update Date', 'Language', 'Number of Stars', 'Tags', 'Url','Gravatar' ,'Unnamed: 0']
         for column in COLUMNS_TO_REMOVE_LIST:
             del df[column]
         df.columns = df.columns.str.lower()
@@ -153,7 +153,7 @@ def Get_Closest_Repo(df_dist,df_backup):
     for recomended_repo in (kk[df_dist[i] == min].index[0:12]):
         description = df_backup.loc[df_backup['Url'] == (
             'http://github.com/%s' % recomended_repo), 'Description'].iloc[0]
-        gravatar = df_backup.loc[df_backup['Url'] == (
+        gravatar =   df_backup.loc[df_backup['Url'] == (
             'http://github.com/%s' % recomended_repo), 'Gravatar'].iloc[0]
         #description
         result_array.append({
