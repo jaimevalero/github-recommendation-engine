@@ -153,12 +153,14 @@ def Get_Closest_Repo(df_dist,df_backup):
     for recomended_repo in (kk[df_dist[i] == min].index[0:12]):
         description = df_backup.loc[df_backup['Url'] == (
             'http://github.com/%s' % recomended_repo), 'Description'].iloc[0]
-
-        description
+        gravatar = df_backup.loc[df_backup['Url'] == (
+            'http://github.com/%s' % recomended_repo), 'Gravatar'].iloc[0]
+        #description
         result_array.append({
             "score": min,
             "user_repo_name": i,
             "recomended_repo_name": recomended_repo,
+            "recomended_repo_image": gravatar ,
             "recomended_repo_description": str(re.sub('<[^<]+?>', '', str(description))).replace('"','').replace("'","")   })
 
     return result_array
