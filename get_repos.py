@@ -169,7 +169,7 @@ def Get_Closest_Repo(df_dist,df_backup):
 
 
 # MAIN
-def Get_Recomended_Repos(github_user) :
+def Get_Recomended_Repos(github_user,loc) :
 
     results=[]
     start = time.time()
@@ -196,11 +196,20 @@ def Get_Recomended_Repos(github_user) :
     print(num_repos)
     for i in range(num_repos):
 
-        df, df_backup = Load_Starred_Repos()
+        df = pd.DataFrame()
+        df_backup = pd.DataFrame()
+        print((start - time.time(), "Antes bloqueo"))
+
+        df        = loc.static_df.copy(deep=True)
+        df_backup = loc.static_df_backup.copy(deep=True)
+
+        print((start - time.time(), "Despues bloqueo"))
+
+        #df, df_backup = Load_Starred_Repos()
 
         print((start - time.time(), "Load_Starred_Repos done"))
 
-        df = Generate_Tag_Matrix(df)
+        #df = Generate_Tag_Matrix(df)
         print((start - time.time(), "Generate_Tag_Matrix done"))
 
         # add repo to tag_matrix
@@ -221,7 +230,7 @@ def Get_Recomended_Repos(github_user) :
     #    results[i]["recomended_repo_description"] = re.sub('<[^<]+?>', '', results[i]["recomended_repo_description"])
 
     if not Path( USER_CACHE_FILE).exists():
-        with open( USER_CACHE_FILE  %github_user, "wb") as output_file:
+        with open( USER_CACHE_FILE , "wb") as output_file:
             pickle.dump(results, output_file)
         return results
      # All

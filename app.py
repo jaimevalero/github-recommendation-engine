@@ -9,6 +9,7 @@ import os
 from flask import jsonify
 import pickle
 from flask import jsonify
+from werkzeug.local import Local
 
 
 #import predict
@@ -17,6 +18,12 @@ import  get_repos
 #app = Flask(__name__,  static_url_path='/Users/jaimevalerodebernabe/git/github-recommendation-engine/views')
 
 app = Flask(__name__,  static_url_path='/Users/jaimevalerodebernabe/git/github-recommendation-engine/views')
+
+loc = Local()
+
+loc.static_df, loc.static_df_backup = get_repos.Load_Starred_Repos()
+loc.static_df = get_repos.Generate_Tag_Matrix(loc.static_df)
+
 
 @app.route('/')
 def hello():
@@ -57,7 +64,7 @@ def default_view(view):
     resultados = dict([])
     busqueda = request.args.get('busqueda' , 'no_busqueda')
 
-    results = get_repos.Get_Recomended_Repos(busqueda)
+    results = get_repos.Get_Recomended_Repos(busqueda,loc)
 
     for i, val in enumerate(results):
       print ( val)
