@@ -12,6 +12,8 @@ import pickle
 import time
 import re
 
+
+
 def Load_Starred_Repos():
     df = pd.DataFrame()
     df = pd.read_csv('TopStaredRepositories.csv')
@@ -170,16 +172,17 @@ def Get_Closest_Repo(df_dist,df_backup):
 def Get_Recomended_Repos(github_user) :
 
     results=[]
-
-
-
-    if Path("/tmp/last_usr.data-%s.data").exists():
-        with open(r"/tmp/last_usr.data-%s.data"  %github_user, "rb") as input_file:
-            results = pickle.load(input_file)
-        return results
-
     start = time.time()
-    # run your code
+
+    # Query cache
+    USER_CACHE_FILE="/tmp/last_usr.data-%s.data" % github_user
+    if Path( USER_CACHE_FILE ).exists():
+        print("1 existe")
+        with open( USER_CACHE_FILE, "rb") as input_file:
+            print("2 existe")
+            results = pickle.load(input_file)
+            print((start - time.time(), "Datos cacheados " , "/tmp/last_usr.data-%s.data"  %github_user ))
+        return results
 
 
 
@@ -217,10 +220,10 @@ def Get_Recomended_Repos(github_user) :
     #for i, val in enumerate(results):
     #    results[i]["recomended_repo_description"] = re.sub('<[^<]+?>', '', results[i]["recomended_repo_description"])
 
-    if not Path("/tmp/last_usr.data-%s.data").exists():
-        with open(r"/tmp/last_usr.data-%s.data"  %github_user, "wb") as output_file:
+    if not Path( USER_CACHE_FILE).exists():
+        with open( USER_CACHE_FILE  %github_user, "wb") as output_file:
             pickle.dump(results, output_file)
-    return results
+        return results
      # All
 
 
