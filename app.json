@@ -1,7 +1,7 @@
 {
   "name": "Github recomendation system",
   "description": "Get suggestions of famous github repositories based on your own repos",
-  "repository": "https://github.com/heroku/node-js-sample",
+  "repository": "https://github.com/jaimevalero/github-recommendation-engine",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
-  "keywords": ["python", "flask", "githun"]
+  "keywords": ["python", "flask", "github"]
 }
