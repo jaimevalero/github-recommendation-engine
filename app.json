@@ -2,6 +2,6 @@
   "name": "Github recomendation system",
   "description": "Get suggestions of famous github repositories based on your own repos",
   "repository": "https://github.com/jaimevalero/github-recommendation-engine",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "logo": "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png",
   "keywords": ["python", "flask", "github"]
 }
