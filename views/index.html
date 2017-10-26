@@ -62,9 +62,14 @@ a:hover {
   width: 100%;
 }
 .row {
-  overflow:hidden;
+  overflow:scroll;
   width: 100%;
 }
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 .row__inner {
   -webkit-transition: 450ms -webkit-transform;
   transition: 450ms -webkit-transform;
