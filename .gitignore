@@ -7,3 +7,6 @@ clean_TopStaredRepositories.csv
 *.pyc
 nohup.out
 *pyc
+my_new_app
+requirements.txt
+.gitignore
