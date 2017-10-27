@@ -6,9 +6,6 @@ import json
 import urllib
 import subprocess
 import os
-from flask import jsonify
-import pickle
-from flask import jsonify
 from werkzeug.local import Local
 
 
