@@ -1,4 +1,6 @@
-#! /bin/bash
+#!/bin/bash
+
+
 cd /Users/jaimevalerodebernabe/git/github-recommendation-engine
 export PATH=$PATH:/Users/jaimevalerodebernabe/git/github-recommendation-engine:/Users/jaimevalerodebernabe/git/github-recommendation-engine
 
