@@ -18,5 +18,6 @@ Repo list from https://www.kaggle.com/chasewillden/topstarredopensourceprojects
 
 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/20c8cb7ed93a4064b4aaf1420eae5880)](https://www.codacy.com/app/jaimevalero78/github-recommendation-engine?utm_source=github.com&utm_medium=referral&utm_content=jaimevalero/github-recommendation-engine&utm_campaign=badger)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
