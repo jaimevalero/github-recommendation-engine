@@ -3,9 +3,6 @@ import jinja2
 from jinja2.ext import with_
 import requests
 import json
-import urllib
-import subprocess
-import os
 from werkzeug.local import Local
 
 
