@@ -1,9 +1,6 @@
 import pandas as pd
-import os
 from pathlib import Path
-import sys
 import requests
-import json
 from requests.auth import HTTPBasicAuth
 import pyjq
 from scipy.spatial import distance
