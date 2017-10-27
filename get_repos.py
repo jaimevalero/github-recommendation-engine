@@ -17,7 +17,6 @@ import re
 def Load_Starred_Repos():
     df = pd.DataFrame()
     df = pd.read_csv('TopStaredRepositories.csv')
-    #df = df.dropna(subset=['Tags'], how='all')
 
     df['Url'] = "http://github.com/" + \
         df['Username'] + "/" + df['Repository Name']
@@ -25,8 +24,6 @@ def Load_Starred_Repos():
     df.to_csv("clean_TopStaredRepositories.csv")
     df = pd.read_csv('clean_TopStaredRepositories.csv')
 
-    #df_backup = pd.read_csv('clean_TopStaredRepositories.csv')
-    #
     df['Language'] = df.loc[:, 'Language'].str.lower()
     df_backup = df.copy(deep=True)
     return df, df_backup
@@ -46,7 +43,6 @@ def Load_User_Repos(github_user):
 def Generate_Tag_Matrix(df):
     my_file = Path("Generate_Tag_Matrix.data")
     if my_file.exists():
-        #print ("Cargamos el Tag maxtrix")
         with open(r"Generate_Tag_Matrix.data", "rb") as input_file:
             df = pickle.load(input_file)
         return df
@@ -86,39 +82,12 @@ def Generate_Tag_Matrix(df):
     return df
 
 
-def Enrich_All_Tag_Matrix(df, json_response, i):
-    new_element = pd.DataFrame(0, [df.index.max() + 1], columns=df.columns)
-
-    all_tags = (pyjq.all(".[] | .name",  json_response) + pyjq.all(".[] | .language",
-                                                                   json_response) + pyjq.all(".[] | .topics[]",  json_response))
-    kk = pyjq.all(".[] | .description",  json_response)
-    for i in kk:
-        all_tags = all_tags + i.split()
-
-    for j in all_tags:
-        for k in j.lower.split("-"):
-            if k is not None:
-                if k in df.columns:
-                    print("Setting to 1", k)
-                    new_element[k] = 1
-        if j is not None:
-            if j.lower() in df.columns:
-                print("Setting to 1", j.lower())
-                new_element[j.lower()] = 1
-
-    df = pd.concat([df, new_element])
-    df.to_csv("Tag_Matrix.csv")
-
-    return df, repo_names
-
-
 def Enrich_Tag_Matrix(df, json_response, i):
     repo_names       = pyjq.all(".[%s] | .name"        % i,  json_response)
     repo_languages   = pyjq.all(".[%s] | .language"    % i,  json_response)
     repo_description = pyjq.all(".[%s] | .description" % i,  json_response)
     repo_topics      = pyjq.all(".[%s] | .topics"      % i,  json_response)
-    #
-    #print( repo_description, repo_names)
+    
     if repo_description[0] is None:
         repo_description = ['kk']
 
@@ -130,7 +99,6 @@ def Enrich_Tag_Matrix(df, json_response, i):
                 new_element[j.lower()] = 1
     # Concat new user repo dataframe to stared repos dataframe
     df = pd.concat([df, new_element])
-    # df.to_csv("Enrich_Tag_Matrix.csv")
 
     return df, repo_names
 
@@ -142,7 +110,6 @@ def Generate_Distance_Matrix(df_backup, df, repo_names):
     res = pdist(df, 'euclidean')
     squareform(res)
     df_dist = pd.DataFrame(squareform(res), index=repos, columns=repos)
-    # df_dist.to_csv("Distance_Matrix.csv")
     return df_dist
 
 def Get_Closest_Repo(df_dist,df_backup):
@@ -226,8 +193,6 @@ def Get_Recomended_Repos(github_user,loc) :
         print((start - time.time(), "Get_Closest_Repo done"))
 
 
-    #for i, val in enumerate(results):
-    #    results[i]["recomended_repo_description"] = re.sub('<[^<]+?>', '', results[i]["recomended_repo_description"])
 
     if not Path( USER_CACHE_FILE).exists():
         with open( USER_CACHE_FILE , "wb") as output_file:
@@ -244,7 +209,6 @@ def Extra_Salida():
         df, df_backup = Load_Starred_Repos()
         df = Generate_Tag_Matrix(df)
         # add repo to tag_matrix
-        df, repo_names = Enrich_All_Tag_Matrix(df, json_response, i)
         # calculate_distance_matrix
         df_dist = Generate_Distance_Matrix(df_backup, df, repo_names)
         # print nearest result
