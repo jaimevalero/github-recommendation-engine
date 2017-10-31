@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html >
 <head>
+
+{% include 'layout/head/meta.html' %}
+{% include 'layout/head/scripts.html' %}
+
   <meta charset="UTF-8">
   <title>Github Suggest System</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-      <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
 
 </head>
@@ -169,9 +171,13 @@ a:hover {
 </style>
 
 <body>
-  <div class="contain">
 
-  <h1>Github recommendation</h1>
+
+
+  <div class="contain">
+    <nav class="navbar navbar-inverse">
+        {% include "layout/navbar.html" %}
+    </nav><!--navbar-inverse -->
 
   <p>
     Discover new github repositories, based on your own user profile.
