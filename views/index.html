@@ -82,6 +82,10 @@ a:hover {
   margin: 70.3125px 0;
   padding-bottom: 10px;
 }
+.i,.a {
+  font-size: 20px;
+  cursor: pointer;
+}
 .tile {
   position: relative;
   display: inline-block;
@@ -185,7 +189,14 @@ a:hover {
 <br>
 
 {% for group in results|groupby('user_repo_name') %}
-  Similar to {{group.grouper}}
+
+
+    <a  href="https://github.com/{{search}}/{{group.grouper}}">
+      <i  class="fa fa-github-alt fa-2x" aria-hidden="false" >  </i>
+      Similar to {{group.grouper}}
+    </a>
+
+
   <div class="row">
     <div class="row__inner">
       {% for item in group.list %}
