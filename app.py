@@ -51,12 +51,12 @@ def default_view(view):
 
 
     resultados = dict([])
-    busqueda = request.args.get('busqueda' , 'no_busqueda')
+    busqueda = request.args.get('busqueda' , 'octocat')
 
     results = get_repos.Get_Recomended_Repos(busqueda,loc)
 
     for i, val in enumerate(results):
-      print ( val)
+      #print ( val)
       json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( val  ) )
 
 
@@ -64,7 +64,7 @@ def default_view(view):
     print(resultados)
 
     try :
-       return template.render( results     = results  )
+       return template.render( results     = results , search = busqueda )
 
 
     except Exception:
