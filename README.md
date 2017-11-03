@@ -20,8 +20,15 @@ Internally, it uses an euclidean distance matrix, calculated for 800 labels, whe
 
 TODO: Use a filter based recomendation system, with like/dislike buttons.
 
+Links:
 
-Repo list from https://www.kaggle.com/chasewillden/topstarredopensourceprojects
+
+Info: [How the suggestions are calculated.]( https://www.kaggle.com/jaimevalero/github-reccomendation-engine)
+
+Kudos: [Repo list info.](https://www.kaggle.com/chasewillden/topstarredopensourceprojects)
+
+Kudos [Netflix like UI.](http://eng.wealthfront.com/2015/06/implementing-netflix-redesign.html)
 
 
    [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
