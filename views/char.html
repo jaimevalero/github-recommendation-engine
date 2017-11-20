@@ -186,6 +186,8 @@
       <div class="row">
         <div class="row__inner">
             {% for repo in stared %}
+                  <a  href="{{repo}}">
+
                 <div class="tile">
                     {{repo[19:]|replace("/","<br>   ")}}
 
