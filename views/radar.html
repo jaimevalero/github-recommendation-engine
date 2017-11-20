@@ -1,0 +1,28 @@
+
+  <canvas id="radar-chart" width="200" height="100"></canvas>
+  <script>
+  new Chart(document.getElementById("radar-chart"), {
+      type: 'radar',
+      data: {
+        labels: {{tags|list }},
+        datasets: [
+           {
+            label: "Skills",
+            fill: true,
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            pointBorderColor: "#fff",
+            pointBackgroundColor: "rgba(255,99,132,1)",
+            pointBorderColor: "#fff",
+            data: [ {% for key, value in tags.items() %}{{value *100}},{% endfor %}]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Tags of the user'
+        }
+      }
+  });
+  </script>

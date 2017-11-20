@@ -1,0 +1,9 @@
+requests/requests
+envoyproxy/envoy
+facebook/mcrouter
+facebook/hhvm
+phacility/phabricator
+facebookarchive/scribe
+facebookarchive/flashcache
+prestodb/presto
+facebook/rocksdb

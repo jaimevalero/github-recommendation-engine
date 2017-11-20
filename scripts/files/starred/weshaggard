@@ -1,0 +1,5 @@
+dotnet/standard
+dotnet/roslyn
+dotnet/coreclr
+dotnet/buildtools
+dotnet/corefx

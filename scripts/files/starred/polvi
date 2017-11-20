@@ -1,0 +1,15 @@
+rkt/rkt
+coreos/fleet
+golang/groupcache
+ryanbressler/HotPotatoFS
+coreos/etcd
+cconf/cconf.github.com
+polvi/crypub
+polvi/cloudkick-py
+cloudkick/cloudkick-py
+polvi/libcloud
+tdavis/libcloud
+oremj/kdmosaic
+polvi/twittertracker
+polvi/twilionagios
+polvi/cloudbench
