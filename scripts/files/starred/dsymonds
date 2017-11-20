@@ -1,0 +1,11 @@
+grpc/grpc-go
+go-kit/kit
+zlsa/atc
+golang/go
+golang/glog
+grahamking/Key-Value-Polyglot
+jacobsa/go-serial
+dsymonds/gotoc
+dsymonds/marcopolo
+dsymonds/objective-git
+chapados/objective-git

@@ -1,0 +1,11 @@
+android-ndk/ndk
+googlesamples/android-ndk
+bazelbuild/bazel
+llvm-mirror/libcxxabi
+llvm-mirror/libcxx
+whitesic/botdotpl
+rust-lang/rust
+aosp-mirror/platform_bionic
+ValveSoftware/steam-runtime
+danilchap/cppgm.tests
+raspberrypi/linux

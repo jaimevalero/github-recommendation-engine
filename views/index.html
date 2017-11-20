@@ -193,10 +193,9 @@ a:hover {
 
     <a  href="https://github.com/{{search}}/{{group.grouper}}">
       <i  class="fa fa-github-alt fa-2x" aria-hidden="false" >  </i>
-      Similar to {{group.grouper}}
+      Similar to {{group.grouper}} <font color="OrangeRed ">Tags: {{group.list[0].user_repo_tags}}</font><br>
+
     </a>
-
-
   <div class="row">
     <div class="row__inner">
       {% for item in group.list %}
@@ -205,11 +204,12 @@ a:hover {
        {{item.recomended_repo_name|replace("/","<br>   ") }}
 
         <div class="tile__media" >
-          <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.user_repo_name}}"  />
+          <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.recomended_repo_name}}"  />
         </div>
         <div class="tile__details">
           <div class="tile__title">
-            <font color="gold">{{item.recomended_repo_description}}</font><br>
+            <font color="gold">{{item.recomended_repo_description}}</font><br>   
+<font color="OrangeRed ">Tags: {{item.common_tags}}</font><br>
           </div>
         </div>
 
