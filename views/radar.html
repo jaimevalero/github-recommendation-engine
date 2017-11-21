@@ -4,7 +4,7 @@
   new Chart(document.getElementById("radar-chart"), {
       type: 'radar',
       data: {
-        labels: {{tags|list }},
+        labels: {{ all_results["stared_tags"]|list }},
         datasets: [
            {
             label: "Skills",
@@ -14,7 +14,7 @@
             pointBorderColor: "#fff",
             pointBackgroundColor: "rgba(255,99,132,1)",
             pointBorderColor: "#fff",
-            data: [ {% for key, value in tags.items() %}{{value *100}},{% endfor %}]
+            data: [ {% for key, value in  all_results["stared_tags"].items() %}{{value *100}},{% endfor %}]
           }
         ]
       },

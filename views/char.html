@@ -175,8 +175,15 @@
          {% include "layout/navbar.html" %}
       </nav>
 
+          {#all_results["results"]#}
 
-      {% if tags is defined %} {% include "radar.html" %} {% endif %}
+          {#all_results["stared_repos"]#}
+
+          {#all_results["stared_tags"]#}
+
+          {#all_results["dict_stared_descriptions"]#}
+
+      {% if all_results["stared_tags"] is defined %} {% include "radar.html" %} {% endif %}
       <p>
          Discover new github repositories, based on your own user profile.
       </p>
@@ -185,18 +192,18 @@
       Stared by similar developers <br>
       <div class="row">
         <div class="row__inner">
-            {% for repo in stared %}
+            {% for repo in all_results["stared_repos"] %}
                   <a  href="{{repo}}">
 
                 <div class="tile">
                     {{repo[19:]|replace("/","<br>   ")}}
 
                     <div class="tile__media" >
-                        <img class="tile__img" src=" {{dict_stared_descriptions[repo[19:]].gravatar_url }}" alt="{{repo}}"  />
+                        <img class="tile__img" src=" {{all_results["dict_stared_descriptions"][repo[19:]].gravatar_url }}" alt="{{repo}}"  />
                     </div>
                     <div class="tile__details">
                         <div class="tile__title">
-                            <font color="gold"> {{dict_stared_descriptions[repo[19:]].description }}</font><br>
+                            <font color="gold"> {{all_results["dict_stared_descriptions"][repo[19:]].description }}</font><br>
 
                         </div>
                     </div>
@@ -207,37 +214,35 @@
         </div>
       </div>
 
-{% for group in results|groupby('user_repo_name') %}
+    {% for group in all_results["results"]|groupby('user_repo_name') %}
+        <a  href="https://github.com/{{search}}/{{group.grouper}}">
+          <i  class="fa fa-github-alt fa-2x" aria-hidden="false" >  </i>
+          Similar to {{group.grouper}} <font color="OrangeRed ">Tags: {{group.list[0].user_repo_tags}}</font><br>
 
+        </a>
+      <div class="row">
+        <div class="row__inner">
+          {% for item in group.list %}
+          <a  href="https://github.com/{{item.recomended_repo_name}}">
+          <div class="tile">
+           {{item.recomended_repo_name|replace("/","<br>   ") }}
 
-    <a  href="https://github.com/{{search}}/{{group.grouper}}">
-      <i  class="fa fa-github-alt fa-2x" aria-hidden="false" >  </i>
-      Similar to {{group.grouper}} <font color="OrangeRed ">Tags: {{group.list[0].user_repo_tags}}</font><br>
+            <div class="tile__media" >
+              <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.recomended_repo_name}}"  />
+            </div>
+            <div class="tile__details">
+              <div class="tile__title">
+                <font color="gold">{{item.recomended_repo_description}}</font><br>
+    <font color="OrangeRed ">Tags: {{item.common_tags}}</font><br>
+              </div>
+            </div>
 
-    </a>
-  <div class="row">
-    <div class="row__inner">
-      {% for item in group.list %}
-      <a  href="https://github.com/{{item.recomended_repo_name}}">
-      <div class="tile">
-       {{item.recomended_repo_name|replace("/","<br>   ") }}
-
-        <div class="tile__media" >
-          <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.recomended_repo_name}}"  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            <font color="gold">{{item.recomended_repo_description}}</font><br>
-<font color="OrangeRed ">Tags: {{item.common_tags}}</font><br>
           </div>
+          </a>
+          {% endfor %}
         </div>
-
       </div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-{% endfor %}
+    {% endfor %}
 
 
       <script  src="js/index.js"></script>
