@@ -10,6 +10,8 @@ import pickle
 import numpy as np
 import time
 import operator
+import gzip
+import _pickle as cPickle
 
 
 def Load_User_Directory(df, num_users_to_read):
@@ -22,10 +24,15 @@ def Load_User_Directory(df, num_users_to_read):
     #
     NUMBER_OF_USERS=17461
     #
-    my_file = Path("Users_Tag_Matrix.data")
+    #my_file = Path("Users_Tag_Matrix.data.gz")
+
+    my_file = Path("Users_Tag_Matrix.data.gz")
     if my_file.exists():
-        with open(r"Users_Tag_Matrix.data", "rb") as input_file:
-            df = pickle.load(input_file)
+        #with open(r"Users_Tag_Matrix.data", "rb") as input_file:
+        #    df = pickle.load(input_file)
+        with gzip.GzipFile(r"Users_Tag_Matrix.data.gz", "rb") as input_file:
+            df = cPickle.load( input_file)
+
             if df.shape[0] == NUMBER_OF_USERS :
                 print("Loaded 17461 users" )
                 return df
@@ -50,9 +57,11 @@ def Load_User_Directory(df, num_users_to_read):
     print("Size: ",df.shape , len(github_user_list[:num_users_to_read]) )
     df.fillna(0, inplace=True)
     #
-    with open(r"Users_Tag_Matrix.data", "wb") as output_file:
-        pickle.dump(df, output_file)
-        df.to_csv("Users_Tag_Matrix.csv")
+    #with open(r"Users_Tag_Matrix.data", "wb") as output_file:
+        #pickle.dump(df, output_file)
+
+    with gzip.GzipFile(r"Users_Tag_Matrix.data.gz", "wb") as output_file:
+        cPickle.dump(df, output_file)
     #
     return df
 
@@ -332,7 +341,7 @@ def Get_Stared_Repos(github_user,loc) :
         repo_names[0] = repo_names[0].lower()
 
         print("Before concat i", i ,df.shape)
-        all_repos_tags.to_csv("kk-all_repos_tags.csv")
+        #all_repos_tags.to_csv("kk-all_repos_tags.csv")
         df = pd.concat([df, all_repos_tags.iloc[i:i+1]])
 
         print("After concat i", i ,df.shape)
@@ -364,7 +373,8 @@ def Get_Stared_Repos(github_user,loc) :
     with open(ALL_RESULTS_PATH, "wb") as output_file:
         pickle.dump(all_results, output_file)
 
-
     return all_results
 
 # ('apex/up', 905), ('goreleaser/goreleaser', 916), ('tonybeltramelli/pix2code', 922), ('kubernetes/kompose', 941), ('google/python-fire', 951), ('cockroachdb/cockroach', 964), ('kailashahirwar/cheatsheets-ai', 970), ('moby/moby', 974), ('torvalds/linux', 991), ('zeit/hyper', 991), ('c-bata/go-prompt', 997), ('jlevy/the-art-of-command-line', 997), ('ansible/ansible-container', 1010), ('gravitational/teleport', 1014), ('requests/requests', 1037), ('localstack/localstack', 1043), ('google/grumpy', 1049), ('bcicen/ctop', 1062), ('serverless/serverless', 1083), ('golang/dep', 1089), ('dgraph-io/badger', 1108), ('avelino/awesome-go', 1118), ('prometheus/prometheus', 1137), ('kubernetes/kubernetes', 1158), ('openfaas/faas', 1158), ('cncf/landscape', 1160), ('froala/design-blocks', 1164), ('go-ego/riot', 1204), ('kubernetes/kops', 1204), ('mholt/caddy', 1210), ('aksakalli/gtop', 1212), ('spf13/cobra', 1233), ('open-guides/og-aws', 1252), ('envoyproxy/envoy', 1256), ('GoogleCloudPlatform/distroless', 1256), ('jwasham/coding-interview-university', 1264), ('pingcap/tidb', 1264), ('vahidk/EffectiveTensorflow', 1310), ('donnemartin/system-design-primer', 1314), ('kubernetes/minikube', 1327), ('tensorflow/tensorflow', 1348), ('aymericdamien/TensorFlow-Examples', 1419), ('GoogleChrome/puppeteer', 1504), ('mr-mig/every-programmer-should-know', 1590), ('istio/istio', 1665), ('ansible/awx', 1688)]
+
+
