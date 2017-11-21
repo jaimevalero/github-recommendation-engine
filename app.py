@@ -37,15 +37,12 @@ def char_view(view):
     stared_tags = {}
     dict_stared_descriptions = {}
     results = []
-
-    stared_repos, stared_tags, dict_stared_descriptions, results = load_user.Get_Stared_Repos(busqueda,loc)
-    #print("dict_stared_descriptions", dict_stared_descriptions)
-    print("results =", results)
+    all_results = {}
+    all_results = load_user.Get_Stared_Repos(busqueda,loc)
+    print("all_results", all_results)
+    #print("results =", results)
     try :
-       return template.render( stared = stared_repos ,
-                                    tags = stared_tags ,
-                                    dict_stared_descriptions = dict_stared_descriptions ,
-                                    results = results)
+       return template.render( all_results = all_results)
     except Exception:
        print ('cannot open', Exception)
 
