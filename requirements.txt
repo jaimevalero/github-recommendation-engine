@@ -15,7 +15,7 @@ cffi==1.9.1
 chardet==2.3.0
 chest==0.2.3
 click==6.7
-cloudpickle==0.2.2
+cloudpickle==0.5.2
 colorama==0.3.7
 configobj==5.0.6
 configparser==3.5.0
