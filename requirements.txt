@@ -110,7 +110,7 @@ smart-open==1.5.3
 sockjs-tornado==1.0.3
 Sphinx==1.5.1
 spyder==3.1.2
-statsmodels==0.6.1
+statsmodels==0.8.0
 sympy==1.0
 tables==3.3.0
 terminado==0.6
