@@ -123,6 +123,6 @@ Werkzeug==0.11.15
 widgetsnbextension==1.2.6
 wrapt==1.10.8
 xlrd==1.0.0
-XlsxWriter==0.9.6
+XlsxWriter==1.0.2
 xlwt==1.2.0
 chartkick==0.5.0
