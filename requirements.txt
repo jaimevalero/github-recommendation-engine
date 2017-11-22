@@ -24,7 +24,7 @@ cycler==0.10.0
 Cython==0.25.2
 cytoolz==0.8.2
 dask==0.13.0
-decorator==4.0.11
+decorator==4.1.2
 dill==0.2.5
 docutils==0.13.1
 Flask==0.12
