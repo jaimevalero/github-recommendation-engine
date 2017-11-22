@@ -15,7 +15,7 @@
       html {
       padding: 0 10px;
       margin: 0;
-      background: #0e0f11;
+      background: #0ffffff;
       color: #ecf0f1;
       font-family: 'Open Sans', sans-serif;
       min-height: 100vh;
@@ -167,84 +167,93 @@
       -webkit-transform: translate3d(125px, 0, 0);
       transform: translate3d(125px, 0, 0);
       }
+      .section{
+      display: inline-block;
+      padding: 8px 12px;
+      font-size: 18px;
+      color: #586069;
+      text-decoration: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-bottom: 0;
+      }
+      color: #586069;
    </style>
-
    <body>
       <div class="contain">
       <nav class="navbar navbar-inverse">
          {% include "layout/navbar.html" %}
       </nav>
-
-          {#all_results["results"]#}
-
-          {#all_results["stared_repos"]#}
-
-          {#all_results["stared_tags"]#}
-
-          {#all_results["dict_stared_descriptions"]#}
-
+      {#all_results["results"]#}
+      {#all_results["stared_repos"]#}
+      {#all_results["stared_tags"]#}
+      {#all_results["dict_stared_descriptions"]#}
       {% if all_results["stared_tags"] is defined %} {% include "radar.html" %} {% endif %}
       <p>
          Discover new github repositories, based on your own user profile.
       </p>
       <br>
-      <i  class="fa fa-github-alt fa-2x" aria-hidden="false" >  </i>
-      Stared by similar developers <br>
+      <div class="d-flex flex-justify-between">
+         <a class="header-logo-invertocat"  data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+            <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32">
+               <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+         </a>
+         <font class="section">
+         Stared by similar developers
+         </font>
+      </div>
       <div class="row">
-        <div class="row__inner">
+         <div class="row__inner">
             {% for repo in all_results["stared_repos"] %}
-                  <a  href="{{repo}}">
-
-                <div class="tile">
-                    {{repo[19:]|replace("/","<br>   ")}}
-
-                    <div class="tile__media" >
-                        <img class="tile__img" src=" {{all_results["dict_stared_descriptions"][repo[19:]].gravatar_url }}" alt="{{repo}}"  />
-                    </div>
-                    <div class="tile__details">
-                        <div class="tile__title">
-                            <font color="gold"> {{all_results["dict_stared_descriptions"][repo[19:]].description }}</font><br>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-
-
-        </div>
+            <a  href="{{repo}}">
+               <div class="tile">
+                  {{repo[19:]|replace("/","<br>   ")}}
+                  <div class="tile__media" >
+                     <img class="tile__img" src=" {{all_results["dict_stared_descriptions"][repo[19:]].gravatar_url }}" alt="{{repo}}"  />
+                  </div>
+                  <div class="tile__details">
+                     <div class="tile__title">
+                        <font color="gold"> {{all_results["dict_stared_descriptions"][repo[19:]].description }}</font><br>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+         </div>
       </div>
-
-    {% for group in all_results["results"]|groupby('user_repo_name') %}
-        <a  href="https://github.com/{{search}}/{{group.grouper}}">
-          <i  class="fa fa-github-alt fa-2x" aria-hidden="false" >  </i>
-          Similar to {{group.grouper}} <font color="OrangeRed ">Tags: {{group.list[0].user_repo_tags}}</font><br>
-
-        </a>
+      {% for group in all_results["results"]|groupby('user_repo_name') %}
+      <div class="d-flex flex-justify-between">
+      <a  href="https://github.com/{{search}}/{{group.grouper}}">
+      <a class="header-logo-invertocat" href="https://github.com/{{search}}/{{group.grouper}}" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      </a>
+      <font class="section">
+      Similar to {{group.grouper}}
+      </font>
+      <font color="OrangeRed ">Tags: {{group.list[0].user_repo_tags}}</font>
+      </div>
+      </a>
       <div class="row">
-        <div class="row__inner">
-          {% for item in group.list %}
-          <a  href="https://github.com/{{item.recomended_repo_name}}">
-          <div class="tile">
-           {{item.recomended_repo_name|replace("/","<br>   ") }}
-
-            <div class="tile__media" >
-              <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.recomended_repo_name}}"  />
-            </div>
-            <div class="tile__details">
-              <div class="tile__title">
-                <font color="gold">{{item.recomended_repo_description}}</font><br>
-    <font color="OrangeRed ">Tags: {{item.common_tags}}</font><br>
-              </div>
-            </div>
-
-          </div>
-          </a>
-          {% endfor %}
-        </div>
+         <div class="row__inner">
+            {% for item in group.list %}
+            <a  href="https://github.com/{{item.recomended_repo_name}}">
+               <div class="tile">
+                  {{item.recomended_repo_name|replace("/","<br>   ") }}
+                  <div class="tile__media" >
+                     <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.recomended_repo_name}}"  />
+                  </div>
+                  <div class="tile__details">
+                     <div class="tile__title">
+                        <font color="gold">{{item.recomended_repo_description}}</font><br>
+                        <font color="OrangeRed ">Tags: {{item.common_tags}}</font><br>
+                     </div>
+                  </div>
+               </div>
+            </a>
+            {% endfor %}
+         </div>
       </div>
-    {% endfor %}
-
-
+      {% endfor %}
       <script  src="js/index.js"></script>
    </body>
 </html>

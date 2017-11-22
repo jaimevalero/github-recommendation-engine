@@ -318,7 +318,7 @@ def Get_Stared_Repos(github_user,loc) :
     sorted_dict_repos = Calculate_Nearest_Neighbours(df,github_user)
     print((start - time.time()), "Calculate_Nearest_Neighbours")
 
-    print ("sorted_dict_repos",sorted_dict_repos)
+    #print ("sorted_dict_repos",sorted_dict_repos)
     for repo in range (min(24,len(sorted_dict_repos))) :
         #print ("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]), list(sorted_dict_repos)[-repo-1][1] )
         stared_repos.append("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]))
@@ -365,6 +365,7 @@ def Get_Stared_Repos(github_user,loc) :
         print((start - time.time(), "Get_Closest_Repo done"))
 
     all_results = {
+        "busqueda" : github_user,
         "stared_repos": stared_repos,
         "stared_tags": stared_tags,
         "dict_stared_descriptions": dict_stared_descriptions,
