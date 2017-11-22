@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f43c8823-650e-4f94-8c7c-8e81147e6594" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kk-all_repos_tags.csv" afterPath="$PROJECT_DIR$/kk-all_repos_tags.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/load_user.py" afterPath="$PROJECT_DIR$/load_user.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/char.html" afterPath="$PROJECT_DIR$/views/char.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/radar.html" afterPath="$PROJECT_DIR$/views/radar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_repos.py" afterPath="$PROJECT_DIR$/get_repos.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,8 +41,8 @@
       <file leaf-file-name="load_user.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/load_user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="436">
+              <caret line="192" column="42" lean-forward="false" selection-start-line="192" selection-start-column="20" selection-end-line="192" selection-end-column="42" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
               </folding>
@@ -69,8 +63,8 @@
       <file leaf-file-name="get_repos.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/get_repos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="297" column="0" lean-forward="true" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+            <state relative-caret-position="208">
+              <caret line="122" column="26" lean-forward="false" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="26" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -82,9 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>results =</find>
-      <find>tags_cloud</find>
-      <find>user_repo_name</find>
       <find>exceptop</find>
       <find>reduce</find>
       <find>stared_repos, stared_tags,dict_stared_descriptions , resultsGet_Closest_Repo</find>
@@ -96,7 +87,6 @@
       <find>all_repos_tags.csv</find>
       <find>df = pd.read_csv('in</find>
       <find>kk</find>
-      <find>to_csv</find>
       <find>user_repo_tags</find>
       <find>Tags:</find>
       <find>stared</find>
@@ -112,6 +102,10 @@
       <find>Calculate_Nearest_Neighbours</find>
       <find>df =</find>
       <find>sers_Tag_Matrix.data</find>
+      <find>to_csv</find>
+      <find>to_c</find>
+      <find>17</find>
+      <find>Load_User_Directory</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,8 +117,8 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/views/radar.html" />
         <option value="$PROJECT_DIR$/views/char.html" />
-        <option value="$PROJECT_DIR$/get_repos.py" />
         <option value="$PROJECT_DIR$/load_user.py" />
+        <option value="$PROJECT_DIR$/get_repos.py" />
       </list>
     </option>
   </component>
@@ -391,8 +385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/get_repos.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="297" column="0" lean-forward="true" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+        <state relative-caret-position="208">
+          <caret line="122" column="26" lean-forward="false" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="26" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -401,8 +395,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/load_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        <state relative-caret-position="436">
+          <caret line="192" column="42" lean-forward="false" selection-start-line="192" selection-start-column="20" selection-end-line="192" selection-end-column="42" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
           </folding>
