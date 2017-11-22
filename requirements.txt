@@ -30,7 +30,7 @@ docutils==0.13.1
 Flask==0.12
 Flask-Cors==3.0.2
 gevent==1.2.1
-greenlet==0.4.11
+greenlet==0.4.12
 gunicorn==19.7.1
 h5py==2.6.0
 HeapDict==1.0.0
