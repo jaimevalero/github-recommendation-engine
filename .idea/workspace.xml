@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f43c8823-650e-4f94-8c7c-8e81147e6594" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_repos.py" afterPath="$PROJECT_DIR$/get_repos.py" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/char.html" afterPath="$PROJECT_DIR$/views/char.html" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,6 +19,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="char.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/char.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -21,11 +28,21 @@
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#98#0" expanded="true" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -33,11 +50,21 @@
               <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="15" />
               <folding>
                 <element signature="e#0#98#0" expanded="true" />
+=======
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="201" column="21" lean-forward="true" selection-start-line="201" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="load_user.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/load_user.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -45,6 +72,26 @@
               <caret line="192" column="42" lean-forward="false" selection-start-line="192" selection-start-column="20" selection-end-line="192" selection-end-column="42" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
+=======
+      <file leaf-file-name="load_user.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/load_user.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="49" column="61" lean-forward="false" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="char.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/char.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="188" column="35" lean-forward="false" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
+              <folding>
+                <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
               </folding>
             </state>
           </provider>
@@ -53,8 +100,13 @@
       <file leaf-file-name="radar.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/radar.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="114">
               <caret line="6" column="43" lean-forward="false" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+=======
+            <state relative-caret-position="45">
+              <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="48" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
               <folding />
             </state>
           </provider>
@@ -63,8 +115,13 @@
       <file leaf-file-name="get_repos.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/get_repos.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="208">
               <caret line="122" column="26" lean-forward="false" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="26" />
+=======
+            <state relative-caret-position="165">
+              <caret line="45" column="43" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="43" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -76,17 +133,41 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>exceptop</find>
       <find>reduce</find>
+=======
+      <find>Generate_Distance_Matrix</find>
+      <find>load_user.Get_Stared_Repos</find>
+      <find>num_repos</find>
+      <find>all_repos_tags</find>
+      <find>Get_User_Tags</find>
+      <find>Get_Stared_Repos</find>
+      <find>Get_Closest_Repo</find>
+      <find>resultados</find>
+      <find>results</find>
+      <find>results =</find>
+      <find>tags_cloud</find>
+      <find>user_repo_name</find>
+      <find>exceptop</find>
+      <find>reduce</find>
+      <find>dict_stared_descriptions</find>
+      <find>stared</find>
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
       <find>stared_repos, stared_tags,dict_stared_descriptions , resultsGet_Closest_Repo</find>
       <find>rada</find>
       <find>similar</find>
       <find>simi</find>
+<<<<<<< HEAD
+=======
+      <find>tags</find>
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
       <find>columns</find>
       <find>csv</find>
       <find>all_repos_tags.csv</find>
       <find>df = pd.read_csv('in</find>
       <find>kk</find>
+<<<<<<< HEAD
       <find>user_repo_tags</find>
       <find>Tags:</find>
       <find>stared</find>
@@ -106,6 +187,12 @@
       <find>to_c</find>
       <find>17</find>
       <find>Load_User_Directory</find>
+=======
+      <find>to_csv</find>
+      <find>users</find>
+      <find>user_repo_tags</find>
+      <find>Tags:</find>
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,10 +202,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/views/radar.html" />
         <option value="$PROJECT_DIR$/views/char.html" />
         <option value="$PROJECT_DIR$/load_user.py" />
         <option value="$PROJECT_DIR$/get_repos.py" />
+=======
+        <option value="$PROJECT_DIR$/load_user.py" />
+        <option value="$PROJECT_DIR$/get_repos.py" />
+        <option value="$PROJECT_DIR$/views/char.html" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
       </list>
     </option>
   </component>
@@ -344,24 +437,39 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="201" column="21" lean-forward="true" selection-start-line="201" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#98#0" expanded="true" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/radar.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="114">
           <caret line="6" column="43" lean-forward="false" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+=======
+        <state relative-caret-position="45">
+          <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="48" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/char.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -369,10 +477,19 @@
           <folding>
             <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/get_repos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="45" column="43" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -389,16 +506,42 @@
           <caret line="122" column="26" lean-forward="false" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="26" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/load_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="49" column="61" lean-forward="false" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="201" column="21" lean-forward="true" selection-start-line="201" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/load_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="192" column="42" lean-forward="false" selection-start-line="192" selection-start-column="20" selection-end-line="192" selection-end-column="42" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/views/char.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="188" column="35" lean-forward="false" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+>>>>>>> fcf08b8ad63ed745287cab99c957f706bf51c6c8
           </folding>
         </state>
       </provider>
