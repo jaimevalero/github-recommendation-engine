@@ -97,7 +97,7 @@ pyzmq==16.0.2
 QtAwesome==0.4.3
 qtconsole==4.2.1
 QtPy==1.2.1
-requests==2.12.4
+requests==2.18.4
 rope-py3k==0.9.4.post1
 scikit-learn==0.18.1
 scipy==0.18.1
