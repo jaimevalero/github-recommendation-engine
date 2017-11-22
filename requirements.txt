@@ -98,7 +98,7 @@ QtAwesome==0.4.3
 qtconsole==4.2.1
 QtPy==1.2.1
 requests==2.12.4
-rope-py3k==0.9.4.post1
+rope-py3k==0.9.4.pre.1
 scikit-learn==0.18.1
 scipy==0.18.1
 simplegeneric==0.8.1
