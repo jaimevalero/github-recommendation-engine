@@ -112,7 +112,7 @@ Sphinx==1.5.1
 spyder==3.1.2
 statsmodels==0.6.1
 sympy==1.0
-tables==3.3.0
+tables==3.4.2
 terminado==0.6
 toolz==0.8.2
 traitlets==4.3.1
