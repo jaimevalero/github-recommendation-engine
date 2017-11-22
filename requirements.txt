@@ -73,7 +73,7 @@ pexpect==4.2.1
 pickleshare==0.7.4
 Pillow==4.0.0
 plotly==2.0.12
-ply==3.9
+ply==3.10
 prompt-toolkit==1.0.9
 protobuf==3.3.0
 psutil==5.0.1
