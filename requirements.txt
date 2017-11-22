@@ -122,7 +122,7 @@ wcwidth==0.1.7
 Werkzeug==0.11.15
 widgetsnbextension==1.2.6
 wrapt==1.10.8
-xlrd==1.0.0
+xlrd==1.1.0
 XlsxWriter==0.9.6
 xlwt==1.2.0
 chartkick==0.5.0
