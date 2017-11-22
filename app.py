@@ -26,7 +26,7 @@ def hello():
 
 @app.route('/char/<view>')
 def char_view(view):
-    busqueda = request.args.get('busqueda' , 'octocat')
+    busqueda = request.args.get('busqueda' , 'jaimevalero')
 
     templateLoader = jinja2.FileSystemLoader( searchpath=['./views'] )
     templateEnv    = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_','chartkick.ext.charts'])
