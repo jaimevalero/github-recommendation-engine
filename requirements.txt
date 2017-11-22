@@ -12,7 +12,7 @@ bokeh==0.12.10
 boto==2.48.0
 Bottleneck==1.2.0
 cffi==1.9.1
-chardet==2.3.0
+chardet==3.0.4
 chest==0.2.3
 click==6.7
 cloudpickle==0.2.2
