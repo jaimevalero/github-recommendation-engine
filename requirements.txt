@@ -51,7 +51,7 @@ matplotlib==2.0.0
 mistune==0.7.3
 mpmath==0.19
 multipledispatch==0.4.9
-nbconvert==4.2.0
+nbconvert==5.3.1
 nbformat==4.2.0
 networkx==1.11
 nltk==3.2.2
