@@ -46,7 +46,7 @@ lazy-object-proxy==1.2.2
 locket==0.2.0
 lxml==3.7.2
 Markdown==2.6.8
-MarkupSafe==0.23
+MarkupSafe==1.0
 matplotlib==2.0.0
 mistune==0.7.3
 mpmath==0.19
