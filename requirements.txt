@@ -108,7 +108,7 @@ sklearn==0.0
 snowballstemmer==1.2.1
 smart-open==1.5.3
 sockjs-tornado==1.0.3
-Sphinx==1.5.1
+Sphinx==1.6.5
 spyder==3.1.2
 statsmodels==0.6.1
 sympy==1.0
