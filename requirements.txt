@@ -65,7 +65,7 @@ odo==0.5.0
 openpyxl==2.4.1
 pandas==0.21.0
 pandasql==0.7.3
-partd==0.3.7
+partd==0.3.8
 pathlib2==2.2.0
 patsy==0.4.1
 pep8==1.7.0
