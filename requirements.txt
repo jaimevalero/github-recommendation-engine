@@ -66,7 +66,7 @@ openpyxl==2.4.1
 pandas==0.21.0
 pandasql==0.7.3
 partd==0.3.7
-pathlib2==2.2.0
+pathlib2==2.3.0
 patsy==0.4.1
 pep8==1.7.0
 pexpect==4.2.1
