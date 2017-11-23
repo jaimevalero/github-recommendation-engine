@@ -121,16 +121,18 @@ def Reduce_Tag_Matrix(df):
     ### Quedarnos solo con las columnas activas
     df_reduced = pd.DataFrame()
     NUM_ELEMENTS=len(df)-1
-    df.iloc[:][NUM_ELEMENTS:].fillna(0, inplace=True)
+    #df.iloc[:][NUM_ELEMENTS:].fillna(0, inplace=True)
 
     print("Start Reduce_Tag_Matrix", df.shape,NUM_ELEMENTS)
     user_repo = df.iloc[NUM_ELEMENTS:]
+    #user_repo = df.iloc[-1]
     for column in df.columns :
         existe = user_repo[column].values[0]
-        if existe > 0 : df_reduced[column] = df[column]
+        #print("columna", column, existe)
+        if existe != 0 : df_reduced[column] = df[column]
 
     df = df_reduced.copy(deep=True)
-    print("End Reduce_Tag_Matrix. dimensions" ,df.shape)
+    print("End Reduce_Tag_Matrix. dimensions" ,df.shape,df_reduced.shape)
 
     return df
 
@@ -195,7 +197,8 @@ def Generate_Distance_Matrix(df_backup, df, repo_names):
 
 ##### Sacar tags lista repositorios, y del último
 def Get_Common_Tags(url,df,df_backup):
-    a = int(df_backup.loc[df_backup['Url'] == url , 'Unnamed: 0' ])
+
+    a = int(df_backup.loc[df_backup['Url'] == url , 'Unnamed: 0' ].head(1))
     serie1 = df.iloc[a]
     serie2 = df.tail(1)
     common_tags = []

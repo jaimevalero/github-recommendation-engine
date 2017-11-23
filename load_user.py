@@ -374,8 +374,8 @@ def Get_Stared_Repos(github_user,loc) :
     with open(ALL_RESULTS_PATH, "wb") as output_file:
         pickle.dump(all_results, output_file)
 
-    with open( "last_response.json" , "w") as output_file:
-        json.dump(all_results, output_file)
+    #with open( "last_response.json" , "w") as output_file:
+    #    json.dump(all_results, output_file)
 
     return all_results
 
