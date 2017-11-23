@@ -33,9 +33,9 @@ def Load_User_Directory(df, num_users_to_read):
         with gzip.GzipFile(r"Users_Tag_Matrix.data.gz", "rb") as input_file:
             df = cPickle.load( input_file)
 
-            if df.shape[0] == NUMBER_OF_USERS :
-                print("Loaded 17461 users" )
-                return df
+        if df.shape[0] == NUMBER_OF_USERS :
+            print("Loaded 17461 users", df.shape )
+            return df
     #
     USER_FILES_PATH="scripts/files/users"
     github_user_list = os.listdir(USER_FILES_PATH)
@@ -324,14 +324,15 @@ def Get_Stared_Repos(github_user,loc) :
         stared_repos.append("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]))
 
     dict_stared_descriptions = Enrich_Stared_Descriptions(stared_repos, loc.df_stared_descriptions)
-
+    
     # Change df and reduce it
     df = loc.static_df.copy(deep=True)
 
     for column in all_repos_tags :
         df_reduced[column] = df[column]
+    
     print("df_reduced", df_reduced.shape)
-    1
+    
     for i in range(num_repos):
         tags_cloud = []
         #df        = loc.static_df.copy(deep=True)
@@ -343,13 +344,11 @@ def Get_Stared_Repos(github_user,loc) :
         print("Before concat i", i ,df.shape)
         #all_repos_tags.to_csv("kk-all_repos_tags.csv")
         df = pd.concat([df, all_repos_tags.iloc[i:i+1]])
-
         print("After concat i", i ,df.shape)
-
-
+        
         # calculate_distance_matrix
         df_dist = get_repos.Generate_Distance_Matrix(df_backup, df, repo_names)
-        print((start - time.time(), "Generate_Distance_Matrix done"))
+        print((start - time.time(), "Generate_Distance_Matrix done"),df_backup.shape, df.shape , len(repo_names) )
 
         # Case repo without labels
         if df_dist is None: continue
@@ -364,6 +363,7 @@ def Get_Stared_Repos(github_user,loc) :
         results = results + curren_repo
         print((start - time.time(), "Get_Closest_Repo done"))
 
+    print ("Generando all results")
     all_results = {
         "busqueda" : github_user,
         "stared_repos": stared_repos,
@@ -373,6 +373,9 @@ def Get_Stared_Repos(github_user,loc) :
 
     with open(ALL_RESULTS_PATH, "wb") as output_file:
         pickle.dump(all_results, output_file)
+
+    with open( "last_response.json" , "w") as output_file:
+        json.dump(all_results, output_file)
 
     return all_results
 

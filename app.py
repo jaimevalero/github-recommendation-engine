@@ -5,14 +5,10 @@ import requests
 import json
 from werkzeug.local import Local
 from flask import Blueprint, abort
-
-
 import  get_repos
 import load_user
 
-
 app = Flask(__name__,  static_url_path='/Users/jaimevalerodebernabe/git/github-recommendation-engine/views')
-
 print ("Locality Starting: ")
 
 loc = Local()
@@ -32,12 +28,12 @@ def char_view(view):
     templateEnv    = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_','chartkick.ext.charts'])
     template       = templateEnv.get_template( "char.html" )
 
-
     stared_repos = []
     stared_tags = {}
     dict_stared_descriptions = {}
     results = []
     all_results = {}
+    print("detectado char")
     all_results = load_user.Get_Stared_Repos(busqueda,loc)
     print("all_results", all_results)
     #print("results =", results)
@@ -79,15 +75,14 @@ def default_view(view):
     resultados = dict([])
     busqueda = request.args.get('busqueda' , 'octocat')
 
-    results = get_repos.Get_Recomended_Repos(busqueda,loc)
+    if "html" in view :   results = get_repos.Get_Recomended_Repos(busqueda,loc)
 
     for i, val in enumerate(results):
-      #print ( val)
       json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( val  ) )
 
 
     resultados["config"  ]    = json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( results  ) )
-    print(resultados)
+    #print(resultados)
 
     try :
        return template.render( results     = results , search = busqueda )
