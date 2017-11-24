@@ -308,10 +308,12 @@ def Get_Stared_Repos(github_user,loc) :
     df, all_repos_tags = Get_User_Tags(df, json_response, 1000, github_user)
     print((start - time.time()), "Get_User_Tags")
 
+
+    print((start - time.time()), "Before Reduce_Tag_Ponder_Matrix" , all_repos_tags.shape ,   all_repos_tags)
+
     df,all_repos_tags = Reduce_Tag_Ponder_Matrix(df,github_user,all_repos_tags)
 
-    print((start - time.time()), "Reduce_Tag_Ponder_Matrix")
-    print("all_repos_tags", all_repos_tags.shape , all_repos_tags, df.shape)
+    print((start - time.time()), "After Reduce_Tag_Ponder_Matrix" , all_repos_tags.shape ,   all_repos_tags)
 
     stared_tags = df.loc[github_user].to_dict()
 

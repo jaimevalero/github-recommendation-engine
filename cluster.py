@@ -31,7 +31,7 @@ print("For n_clusters =", n_clusters, "The average silhouette_score is :", silho
 with gzip.GzipFile(r"Users_Tag_Matrix.data.gz", "rb") as input_file:
     df = cPickle.load(input_file)
 
-
+# So we chose
 # Cluster the data
 n_clusters = 12
 kmeans = KMeans(n_clusters = n_clusters, random_state = 0).fit(df)
@@ -58,3 +58,13 @@ for cluster in range(n_clusters):
 roles.fillna(0, inplace=True)
 roles.to_csv("Roles.csv")
 
+>>> jaime = df.tail(1)
+
+
+kmeans.predict(jaime)[0]
+
+github_user = "jaimevalero"
+
+import scipy
+
+for i in range (13) : scipy.spatial.distance.euclidean(centroids[i],  jaime.values.tolist()[0])
