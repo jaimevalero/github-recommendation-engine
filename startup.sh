@@ -14,7 +14,7 @@ ps -ef | grep python  | awk '{print $2}' | xargs kill -9
 
 #rm -f /tmp/*jaimevalero* Generate_Tag_Matrix.data
 
-gunicorn -b 0.0.0.0:5000  -w 1  app:app  --timeout 300 --log-level=debug  
+gunicorn -b 0.0.0.0:5000  -w 6  app:app  --timeout 300 --log-level=debug  
 
 
 

@@ -28,15 +28,10 @@ def char_view(view):
     templateEnv    = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_','chartkick.ext.charts'])
     template       = templateEnv.get_template( "char.html" )
 
-    stared_repos = []
-    stared_tags = {}
-    dict_stared_descriptions = {}
-    results = []
     all_results = {}
     print("detectado char")
     all_results = load_user.Get_Stared_Repos(busqueda,loc)
     print("all_results", all_results)
-    #print("results =", results)
     try :
        return template.render( all_results = all_results)
     except Exception:
@@ -48,7 +43,6 @@ def char_view(view):
 @app.route('/views/css/<view>')
 @app.route('/views/<view>')
 def default_view(view):
-    print("EXTATICO     " ,view)
 
     # Load Jinja environment
     if "css"  in view  :
@@ -63,31 +57,21 @@ def default_view(view):
         templateLoader = jinja2.FileSystemLoader( searchpath=['/Users/jaimevalerodebernabe/git/github-recommendation-engine/views/js'] )
         templateEnv = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_'])
         template = templateEnv.get_template( view )
-        print ("DETECTADO CSSS!!!", view)
+        print ("DETECTADO JS!!!", view)
         return template.render( )
 
 
+    busqueda = request.args.get('busqueda' , 'jaimevalero')
+
     templateLoader = jinja2.FileSystemLoader( searchpath=['./views'] )
-    templateEnv = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_'])
-    template = templateEnv.get_template( view )
+    templateEnv    = jinja2.Environment( loader=templateLoader , extensions=['jinja2.ext.with_','chartkick.ext.charts'])
+    template       = templateEnv.get_template( "char.html" )
 
-
-    resultados = dict([])
-    busqueda = request.args.get('busqueda' , 'octocat')
-
-    if "html" in view :   results = get_repos.Get_Recomended_Repos(busqueda,loc)
-
-    for i, val in enumerate(results):
-      json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( val  ) )
-
-
-    resultados["config"  ]    = json.loads('  { "SEARCH_DECODED" : "%s"  } ' % ( results  ) )
-    #print(resultados)
-
+    all_results = {}
+    all_results = load_user.Get_Stared_Repos(busqueda,loc)
+    print("all_results", all_results)
     try :
-       return template.render( results     = results , search = busqueda )
-
-
+       return template.render( all_results = all_results)
     except Exception:
        print ('cannot open', Exception)
 
