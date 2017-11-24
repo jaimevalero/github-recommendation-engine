@@ -190,7 +190,19 @@
     font-color: #0366d6;
     color: #0366d6;
     }
+    .repo-name{
+    font-weight: 600;
+    color: #24292e;
+    }
 
+   .HeaderNavlink {
+    display: block;
+    color: rgba(255,255,255,0.75);
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+     }
 
    </style>
    <body>
@@ -222,7 +234,7 @@
             {% for repo in all_results["stared_repos"] %}
             <a  href="{{repo}}">
                <div class="tile">
-                  {{repo[19:]|replace("/","<br>   ")}}
+                  <font class = "repo-name">  {{repo[19:]|replace("/","<br>   ")}}  </font>
                   <div class="tile__media" >
                      <img class="tile__img" src=" {{all_results["dict_stared_descriptions"][repo[19:]].gravatar_url }}" alt="{{repo}}"  />
                   </div>
@@ -256,7 +268,7 @@
             {% for item in group.list %}
             <a  href="https://github.com/{{item.recomended_repo_name}}">
                <div class="tile">
-                  {{item.recomended_repo_name|replace("/","<br>   ") }}
+                  <font class = "repo-name"> {{item.recomended_repo_name|replace("/","<br>   ") }} </font>
                   <div class="tile__media" >
                      <img class="tile__img" src="{{item.recomended_repo_image}}" alt="{{item.recomended_repo_name}}"  />
                   </div>

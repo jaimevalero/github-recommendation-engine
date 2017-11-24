@@ -1,13 +1,15 @@
 
   <canvas id="radar-chart" width="200" height="100"></canvas>
   <script>
+  Chart.defaults.global.defaultFontSize = 20;
+  Chart.defaults.global.defaultFontFamily = "sans-serif" ; 
   new Chart(document.getElementById("radar-chart"), {
       type: 'radar',
       data: {
         labels: {{ all_results["stared_tags"]|list }},
         datasets: [
            {
-            label: "Skills",
+            label: "Skills of {{all_results["busqueda"]}} ",
             fill: true,
             backgroundColor: "rgba(255,99,132,0.2)",
             borderColor: "rgba(255,99,132,1)",
@@ -22,7 +24,7 @@
         title: {
           display: true,
           backgroundColor: "rgba(255,99,132,0.2)",
-          text: 'Tags of {{all_results["busqueda"]}} '
+          text: 'Skill set'
         }
       }
   });
