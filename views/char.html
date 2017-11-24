@@ -11,6 +11,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
    </head>
    <style type="text/css">
+
+
       body,
       html {
       padding: 0 10px;
@@ -177,7 +179,19 @@
       border: 1px solid transparent;
       border-bottom: 0;
       }
-      color: #586069;
+
+    .topic-tag {
+    display: inline-block;
+    padding: 0.3em 0.9em;
+    margin: 0 0.5em 0.5em 0;
+    white-space: nowrap;
+    background-color: #f1f8ff;
+    border-radius: 3px;
+    font-color: #0366d6;
+    color: #0366d6;
+    }
+
+
    </style>
    <body>
       <div class="contain">
@@ -230,7 +244,11 @@
       <font class="section">
       Similar to {{group.grouper}}
       </font>
-      <font color="OrangeRed ">Tags: {{group.list[0].user_repo_tags}}</font>
+      {%for tag in group.list[0].user_repo_tags %}
+        <font class = "topic-tag"> {{tag}}     </font>
+      {% endfor %}
+
+
       </div>
       </a>
       <div class="row">
@@ -245,7 +263,9 @@
                   <div class="tile__details">
                      <div class="tile__title">
                         <font color="gold">{{item.recomended_repo_description}}</font><br>
-                        <font color="OrangeRed ">Tags: {{item.common_tags}}</font><br>
+                        {%for tag in item.common_tags %}
+                        <font class = "topic-tag"> {{tag}}     </font>
+                        {% endfor %}
                      </div>
                   </div>
                </div>
