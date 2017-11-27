@@ -1,0 +1,144 @@
+82         php   0.631494
+83   wordpress   0.686799
+84      simple   0.788193
+85      google   1.032051
+86        ruby   1.100314
+87     website   1.576374
+88       theme   2.221860
+89        html   2.630020
+90  javascript   3.103664
+91         css  45.720357
+Users 71
+               0           1
+1172       files   47.932033
+1173        ruby   49.506761
+1174     library   55.363653
+1175     angular   55.818403
+1176      python   60.356747
+1177      simple   71.090050
+1178        html   92.352335
+1179         css   94.497594
+1180       react   95.571011
+1181  javascript  915.889892
+Users 4325
+              0           1
+654   framework    5.476916
+655      client    6.091549
+656       shell    6.646342
+657     library    7.400931
+658        html    7.878133
+659       files    7.887731
+660      simple   10.775776
+661  javascript   21.234015
+662       rails   30.667676
+663        ruby  193.315394
+Users 551
+              0           1
+853      server    8.791754
+854      jquery    9.484816
+855       files   11.046408
+856     browser   11.050020
+857     library   15.520593
+858      simple   16.070437
+859         css   16.953282
+860       react   18.595509
+861        html   19.483996
+862  javascript  466.366725
+Users 1118
+              0           1
+919           c   19.546016
+920         c++   19.586125
+921       files   20.584045
+922        html   23.060322
+923     library   23.419731
+924      simple   24.315263
+925       shell   24.739730
+926      django   41.741253
+927  javascript   62.814719
+928      python  432.401039
+Users 1586
+              0           1
+970        html   19.537270
+971      python   21.872076
+972         css   22.788438
+973     library   23.193726
+974       files   25.360726
+975      simple   28.597997
+976       shell   29.954648
+977       rails   49.124141
+978  javascript   99.534501
+979        ruby  241.989823
+Users 1503
+               0           1
+1208     library   76.032570
+1209         css   77.012589
+1210        html   82.392941
+1211          c#   90.772026
+1212        java   93.229607
+1213           c  102.140322
+1214         c++  116.062707
+1215       shell  125.248456
+1216      python  168.491697
+1217  javascript  207.233103
+Users 4610
+              0           1
+831     example   13.505300
+832        html   13.580683
+833      kotlin   14.167763
+834      simple   16.013015
+835      python   16.357463
+836      google   17.126182
+837  javascript   30.325027
+838     library   30.923830
+839     android  157.057156
+840        java  310.231663
+Users 1210
+               0           1
+787        phone   10.006577
+788        cocoa   11.804716
+789        image   11.859984
+790         ruby   15.743084
+791      library   16.339503
+792    framework   16.419581
+793       simple   19.213062
+794   javascript   23.265553
+795        swift  139.239927
+796  objective-c  175.187929
+Users 1021
+             0          1
+33    tutorial   0.333333
+34        java   0.364583
+35     website   0.400000
+36      simple   0.500000
+37         c++   0.600000
+38     haskell   0.600000
+39     testing   0.966667
+40       build   1.254167
+41  javascript   2.242735
+42        html  39.287927
+Users 52
+              0           1
+813        html   10.556084
+814       shell   12.088166
+815         css   12.466498
+816     library   12.506515
+817   framework   13.458006
+818   wordpress   15.663345
+819     laravel   16.210972
+820      simple   16.493443
+821  javascript   45.992585
+822         php  174.157627
+Users 770
+              0           1
+806      server    9.558224
+807      simple   10.003905
+808        ruby   10.065188
+809      docker   11.933462
+810       shell   13.604806
+811     library   13.718882
+812      python   17.880901
+813      golang   21.267632
+814  javascript   23.204626
+815          go  126.170277
+Users 644
+
