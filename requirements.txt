@@ -7,7 +7,7 @@ backports.weakref==1.0rc1
 beautifulsoup4==4.6.0
 bitarray==0.8.1
 blaze==0.10.1
-bleach==2.1.1
+bleach==2.1.2
 bokeh==0.12.10
 boto==2.48.0
 Bottleneck==1.2.0
