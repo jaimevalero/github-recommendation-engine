@@ -47,7 +47,7 @@ locket==0.2.0
 lxml==3.7.2
 Markdown==2.6.8
 MarkupSafe==0.23
-matplotlib==2.0.0
+matplotlib==2.1.1
 mistune==0.7.3
 mpmath==0.19
 multipledispatch==0.4.9
