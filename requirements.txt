@@ -22,7 +22,7 @@ configparser==3.5.0
 contextlib2==0.5.4
 cycler==0.10.0
 Cython==0.25.2
-cytoolz==0.8.2
+cytoolz==0.9.0
 dask==0.13.0
 decorator==4.0.11
 dill==0.2.5
@@ -114,7 +114,7 @@ statsmodels==0.6.1
 sympy==1.0
 tables==3.3.0
 terminado==0.6
-toolz==0.8.2
+toolz==0.9.0
 traitlets==4.3.1
 unicodecsv==0.14.1
 vega==0.5.0
