@@ -1,6 +1,6 @@
 altair==1.2.1
 appnope==0.1.0
-astroid==1.5.3
+astroid==1.6.0
 astropy==2.0.2
 backports.shutil-get-terminal-size==1.0.0
 backports.weakref==1.0rc1
