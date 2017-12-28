@@ -106,7 +106,7 @@ singledispatch==3.4.0.3
 six==1.10.0
 sklearn==0.0
 snowballstemmer==1.2.1
-smart-open==1.5.3
+smart-open==1.5.6
 sockjs-tornado==1.0.3
 Sphinx==1.5.1
 spyder==3.1.2
