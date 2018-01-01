@@ -63,7 +63,7 @@ numpy==1.11.3
 numpydoc==0.6.0
 odo==0.5.0
 openpyxl==2.4.1
-pandas==0.21.0
+pandas==0.22.0
 pandasql==0.7.3
 partd==0.3.7
 pathlib2==2.2.0
