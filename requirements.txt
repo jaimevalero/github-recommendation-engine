@@ -23,7 +23,7 @@ contextlib2==0.5.4
 cycler==0.10.0
 Cython==0.25.2
 cytoolz==0.8.2
-dask==0.13.0
+dask==0.16.1
 decorator==4.0.11
 dill==0.2.5
 docutils==0.13.1
