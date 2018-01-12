@@ -11,7 +11,7 @@ bleach==2.1.1
 bokeh==0.12.10
 boto==2.48.0
 Bottleneck==1.2.0
-cffi==1.9.1
+cffi==1.11.3
 chardet==2.3.0
 chest==0.2.3
 click==6.7
