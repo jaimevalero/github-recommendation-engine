@@ -61,7 +61,8 @@ def Generate_Tag_Matrix(df):
     my_file = Path("Generate_Tag_Matrix.data")
     if my_file.exists():
         with open(r"Generate_Tag_Matrix.data", "rb") as input_file:
-            df = pickle.load(input_file)
+            df = pd.read_pickle(input_file)
+
         return df
     else:
 
@@ -115,7 +116,7 @@ def Reduce_Tag_Matrix(df):
     #with open(r"kk.data", "wb") as output_file:
     #    pickle.dump(df, output_file)
     #with open(r"kk.data", "rb") as input_file:
-    #    df = pickle.load(input_file)
+    #    df = pd.read_pickle(input_file)
 
     ### Quedarnos solo con las columnas activas
     df_reduced = pd.DataFrame()
@@ -243,7 +244,7 @@ def Get_Recomended_Repos(github_user,loc) :
     USER_CACHE_FILE="/tmp/last_usr.data-%s.data" % github_user
     if Path( USER_CACHE_FILE ).exists():
         with open( USER_CACHE_FILE, "rb") as input_file:
-            results = pickle.load(input_file)
+            results = pd.read_pickle(input_file)
             print((start - time.time(), "Datos cacheados " , "/tmp/last_usr.data-%s.data"  %github_user ))
         return results
 
