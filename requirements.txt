@@ -40,7 +40,6 @@ filelock==3.0.10
 Flask==1.0.2
 gevent==1.4.0
 glob2==0.6
-gmpy2==2.0.8
 greenlet==0.4.15
 gunicorn==19.9.0
 h5py==2.9.0
