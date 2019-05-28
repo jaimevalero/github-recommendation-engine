@@ -1,5 +1,4 @@
 alabaster==0.7.12
-anaconda-client==1.7.2
 anaconda-project==0.8.2
 asn1crypto==0.24.0
 astroid==2.2.5
