@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% set BASE_URL= "https://jaimevalero.github.io/managing-awesome-lists" %}
+
 <html >
    <head>
       {% include 'layout/head/meta.html' %}
@@ -257,7 +259,9 @@
       Similar to {{group.grouper}}
       </font>
       {%for tag in group.list[0].user_repo_tags %}
-        <font class = "topic-tag"> {{tag}}     </font>
+      <a href="{{BASE_URL}}/var/topics/{{tag}}.html" >
+        <font href= "" class = "topic-tag">{{tag}}</font>
+      </a>
       {% endfor %}
 
 
