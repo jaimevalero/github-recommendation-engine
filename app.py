@@ -20,6 +20,18 @@ print ("Locality Started: ")
 def hello():
     return redirect("views/index.html", code=302)
 
+# Simple api
+@app.route('/api/labels/reccomendations')
+def get_labels_reccomendations(labels):
+    rec_array = []
+    return rec_array
+     
+@app.route('/api/user/<github_user>/reccomendations')
+def get_user_reccomendations(github_user):
+    rec_array = []
+    return rec_array
+
+
 @app.route('/char/<view>')
 def char_view(view):
     busqueda = request.args.get('busqueda' , 'jaimevalero')
