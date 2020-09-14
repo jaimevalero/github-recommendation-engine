@@ -21,16 +21,20 @@ def hello():
     return redirect("views/index.html", code=302)
 
 # Simple api
-@app.route('/api/labels/reccomendations')
-def get_labels_reccomendations(labels):
-    rec_array = []
+@app.route('/api/v1/labels/reccomendations')
+@app.route('/api/latest/labels/reccomendations')
+def get_labels_reccomendations():
+    rec_array = {}
     return rec_array
-     
-@app.route('/api/user/<github_user>/reccomendations')
+    
+@app.route('/api/latest/user/<github_user>/reccomendations')
+@app.route('/api/v1/user/<github_user>/reccomendations')
 def get_user_reccomendations(github_user):
-    rec_array = []
+    busqueda=github_user
+    all_results = load_user.Get_Stared_Repos(busqueda,loc)
+    print("all_results", all_results)
+    rec_array = all_results
     return rec_array
-
 
 @app.route('/char/<view>')
 def char_view(view):
