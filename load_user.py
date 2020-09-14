@@ -189,7 +189,7 @@ def Load_Initial_data():
     df_tags       = get_repos.Generate_Tag_Matrix(pd.DataFrame())
     df            = pd.DataFrame(columns = df_tags.columns)
     df = Load_User_Directory(df, -1)
-
+    #
     my_file = Path("Users_Tag_Matrix.data")
     if my_file.exists():
         with open(r"Users_Tag_Matrix.data", "rb") as input_file:
@@ -205,7 +205,6 @@ def Get_User_Favorites(dict_repos, neighbour_user, correlation_factor):
         try:  dict_repos[i] += correlation_factor
         except Exception: dict_repos[i] = correlation_factor
     return dict_repos
-
 
 def Reduce_Tag_Ponder_Matrix(df,github_user,all_repos_tags):
     """
@@ -227,7 +226,6 @@ def Reduce_Tag_Ponder_Matrix(df,github_user,all_repos_tags):
     all_repos_tags = otro
 
     return df,all_repos_tags
-
 
 def Calculate_Nearest_Neighbours(df,github_user):
     # Temp Dataframe
@@ -271,42 +269,16 @@ def Enrich_Stared_Descriptions(stared_repos, df_stared_descriptions):
 
     return dict_stared_descriptions
 
-# Main
-####### NUEVO
-def Get_Stared_Repos(github_user,loc) :
+def Calculate_Reccomendations(df,github_user,all_repos_tags,start,loc,num_repos,json_response,ALL_RESULTS_PATH):
+    """
+    Reduce Cardinality, and calculate neighbours, etc
+    """
     stared_repos = []
     stared_tags  = {}
-    dict_stared_descriptions = {}
     sorted_dict_repos ={}
-    start = time.time()
-    results = []
-    all_results = {}
-    all_repos_tags = pd.DataFrame()
     df_reduced = pd.DataFrame()
-    # github_user = "rubengarciacarrasco"
+    results = []
 
-    ALL_RESULTS_PATH= "/tmp/cache-all_results-%s.tmp" % github_user
-    print((start - time.time()), "get_repos.Load_User_Repos")
-    my_file = Path(ALL_RESULTS_PATH)
-
-
-    # Are results cached ?
-    if my_file.exists():
-        print ("Cahed : ", ALL_RESULTS_PATH)
-        with open( r"/tmp/cache-all_results-%s.tmp" % github_user, "rb") as input_file:
-            all_results = pickle.load(input_file)
-        return all_results
-
-    # Query github for the user
-    json_response = get_repos.Load_User_Repos(github_user)
-    num_repos = len(pyjq.all(".[] | .name", json_response))
-
-    df_tags, df = Load_Initial_data()
-    print((start - time.time()), "Load_Initial_data ")
-
-    # Add user
-    df, all_repos_tags = Get_User_Tags(df, json_response, 1000, github_user)
-    print((start - time.time()), "Get_User_Tags")
 
     df,all_repos_tags = Reduce_Tag_Ponder_Matrix(df,github_user,all_repos_tags)
 
@@ -318,24 +290,21 @@ def Get_Stared_Repos(github_user,loc) :
     sorted_dict_repos = Calculate_Nearest_Neighbours(df,github_user)
     print((start - time.time()), "Calculate_Nearest_Neighbours")
 
-    #print ("sorted_dict_repos",sorted_dict_repos)
     for repo in range (min(24,len(sorted_dict_repos))) :
-        #print ("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]), list(sorted_dict_repos)[-repo-1][1] )
         stared_repos.append("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]))
 
     dict_stared_descriptions = Enrich_Stared_Descriptions(stared_repos, loc.df_stared_descriptions)
-    
+
     # Change df and reduce it
     df = loc.static_df.copy(deep=True)
 
     for column in all_repos_tags :
         df_reduced[column] = df[column]
-    
+
     print("df_reduced", df_reduced.shape)
-    
+
     for i in range(num_repos):
         tags_cloud = []
-        #df        = loc.static_df.copy(deep=True)
         df= df_reduced.copy(deep=True)
         df_backup = loc.static_df_backup.copy(deep=True)
         repo_names = pyjq.all(".[%s] | .name" % i, json_response)
@@ -345,7 +314,7 @@ def Get_Stared_Repos(github_user,loc) :
         #all_repos_tags.to_csv("kk-all_repos_tags.csv")
         df = pd.concat([df, all_repos_tags.iloc[i:i+1]])
         print("After concat i", i ,df.shape)
-        
+
         # calculate_distance_matrix
         df_dist = get_repos.Generate_Distance_Matrix(df_backup, df, repo_names)
         print((start - time.time(), "Generate_Distance_Matrix done"),df_backup.shape, df.shape , len(repo_names) )
@@ -374,11 +343,43 @@ def Get_Stared_Repos(github_user,loc) :
     with open(ALL_RESULTS_PATH, "wb") as output_file:
         pickle.dump(all_results, output_file)
 
+    return all_results
+
+# Main
+def Get_Stared_Repos(github_user,loc) :
+    dict_stared_descriptions = {}
+    start = time.time()
+    all_results = {}
+    all_repos_tags = pd.DataFrame()
+    # github_user = "rubengarciacarrasco"
+
+    ALL_RESULTS_PATH= "/tmp/cache-all_results-%s.tmp" % github_user
+    print((start - time.time()), "get_repos.Load_User_Repos")
+    my_file = Path(ALL_RESULTS_PATH)
+
+
+    # Are results cached ?
+    if my_file.exists():
+        print ("Cahed : ", ALL_RESULTS_PATH)
+        with open( r"/tmp/cache-all_results-%s.tmp" % github_user, "rb") as input_file:
+            all_results = pickle.load(input_file)
+        return all_results
+
+    # Query github for the user
+    json_response = get_repos.Load_User_Repos(github_user)
+    num_repos = len(pyjq.all(".[] | .name", json_response))
+
+    df_tags, df = Load_Initial_data()
+    print((start - time.time()), "Load_Initial_data ")
+
+    # Add user
+    df, all_repos_tags = Get_User_Tags(df, json_response, 1000, github_user)
+    print((start - time.time()), "Get_User_Tags")
+
+    all_results = Calculate_Reccomendations(df,github_user,all_repos_tags,start,loc,num_repos,json_response,ALL_RESULTS_PATH)
     #with open( "last_response.json" , "w") as output_file:
     #    json.dump(all_results, output_file)
 
     return all_results
 
 # ('apex/up', 905), ('goreleaser/goreleaser', 916), ('tonybeltramelli/pix2code', 922), ('kubernetes/kompose', 941), ('google/python-fire', 951), ('cockroachdb/cockroach', 964), ('kailashahirwar/cheatsheets-ai', 970), ('moby/moby', 974), ('torvalds/linux', 991), ('zeit/hyper', 991), ('c-bata/go-prompt', 997), ('jlevy/the-art-of-command-line', 997), ('ansible/ansible-container', 1010), ('gravitational/teleport', 1014), ('requests/requests', 1037), ('localstack/localstack', 1043), ('google/grumpy', 1049), ('bcicen/ctop', 1062), ('serverless/serverless', 1083), ('golang/dep', 1089), ('dgraph-io/badger', 1108), ('avelino/awesome-go', 1118), ('prometheus/prometheus', 1137), ('kubernetes/kubernetes', 1158), ('openfaas/faas', 1158), ('cncf/landscape', 1160), ('froala/design-blocks', 1164), ('go-ego/riot', 1204), ('kubernetes/kops', 1204), ('mholt/caddy', 1210), ('aksakalli/gtop', 1212), ('spf13/cobra', 1233), ('open-guides/og-aws', 1252), ('envoyproxy/envoy', 1256), ('GoogleCloudPlatform/distroless', 1256), ('jwasham/coding-interview-university', 1264), ('pingcap/tidb', 1264), ('vahidk/EffectiveTensorflow', 1310), ('donnemartin/system-design-primer', 1314), ('kubernetes/minikube', 1327), ('tensorflow/tensorflow', 1348), ('aymericdamien/TensorFlow-Examples', 1419), ('GoogleChrome/puppeteer', 1504), ('mr-mig/every-programmer-should-know', 1590), ('istio/istio', 1665), ('ansible/awx', 1688)]
-
-

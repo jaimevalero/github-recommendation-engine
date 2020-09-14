@@ -26,7 +26,7 @@ def Load_Starred_Repos():
 
     df_stared_descriptions = pd.read_csv("stared-descriptions.csv")
     df_stared_descriptions = df_stared_descriptions.set_index(['repo'])
-
+    print(df.columns)
     df['Language'] = df.loc[:, 'Language'].str.lower()
     df_backup = df.copy(deep=True)
     return df, df_backup , df_stared_descriptions
