@@ -7,6 +7,8 @@
 ![Demo site](https://github.com/jaimevalero/github-recommendation-engine/blob/master/views/img/webscreen_capture.gif)
 
 
+
+
   
 
 
@@ -31,4 +33,5 @@ Kudos [Netflix like UI.](http://eng.wealthfront.com/2015/06/implementing-netflix
 
 
    [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 
