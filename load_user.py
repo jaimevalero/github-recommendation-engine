@@ -38,7 +38,11 @@ def Load_User_Directory(df, num_users_to_read):
             return df
     #
     USER_FILES_PATH="scripts/files/users"
-    github_user_list = os.listdir(USER_FILES_PATH)
+    try: 
+        github_user_list = os.listdir(USER_FILES_PATH)
+    except:
+        github_user_list = []
+        
     if num_users_to_read == -1 : num_users_to_read = len(github_user_list)
     #
     for i in range(num_users_to_read):
@@ -109,10 +113,8 @@ def Get_User_Tags(df, json_response, i, github_user):
         all_repos_tags.loc[reponame_lower] = 0
 
         if repo_description[0] is None: repo_description = ['kk']
-
-        if repo_languages[0]   is None: repo_languages = ['kk']
-        #
-        if repo_topics[0]   is None:    repo_topics = ['kk']
+        if repo_languages[0]   is None: repo_languages   = ['kk']
+        if repo_topics[0]      is None: repo_topics      = ['kk']
         #
         try:  repo_names[0]       = repo_names[0].lower()
         except Exception: pass
@@ -130,29 +132,29 @@ def Get_User_Tags(df, json_response, i, github_user):
             tags[repo_languages[0]] = 0
             all_repos_tags.loc[reponame_lower][repo_languages[0]] = 1
 
-            #print("Added tag 1 : ", (i+1)," " ,repo_names[0] ," " , repo_languages[0])
+            print(" Log Added tag 1 : ", (i+1)," " ,repo_names[0] ," " , repo_languages[0])
         for column in df.columns:
             if column in COLUMNS_TO_SKIP : continue
             if column in repo_topics[0] :
                 new_element[column] += (i+1)
                 all_repos_tags.loc[reponame_lower][column] = 1
                 tags[column] = 0
-                #print("Added tag 2 : ", (i+1)," " ,repo_names[0] ," " , column)
+                print(" Log Added tag 2 : ", (i+1)," " ,repo_names[0] ," " , column)
             else:
                 if len(column) > 4 :
                     if column in repo_names[0] or column.replace("-"," ") in repo_names[0]:
-                        #print("Added tag 3 : ", (i+1)," " ,repo_names[0] ," " , column)
+                        print(" Log Added tag 3 : ", (i+1)," " ,repo_names[0] ," " , column)
                         new_element[column] += (i+1)
                         all_repos_tags.loc[reponame_lower][column] = 1
                         tags[column] = 0
                     else :
                         if column in repo_description[0] or column.replace("-"," ") in repo_description[0]:
-                            #print("Added tag 4 : ", (i+1)," " ,repo_names[0] ," " , column)
+                            print(" Log Added tag 4 : ", (i+1)," " ,repo_names[0] ," " , column)
                             new_element[column] += (i+1)
                             all_repos_tags.loc[reponame_lower][column] = 1
                             tags[column] = 0
         # end range repos
-    #print("new_element.shape: ", new_element.shape , " github_user:", github_user)
+    print(" Log new_element.shape: ", new_element.shape , " github_user:", github_user)
     #
     total=new_element.iloc[0].sum()
     #print(tags)
@@ -255,16 +257,16 @@ def Calculate_Nearest_Neighbours(df,github_user):
 
 def Enrich_Stared_Descriptions(stared_repos, df_stared_descriptions):
     dict_stared_descriptions = {}
-    #print("Entering Enrich_Stared_Descriptions", stared_repos, df_stared_descriptions.shape)
-    #print("Entering Enrich_Stared_Descriptions2", df_stared_descriptions.shape.index)
+    print(" Log Entering Enrich_Stared_Descriptions")
+    print(" Log Entering Enrich_Stared_Descriptions2", stared_repos, df_stared_descriptions.shape)
+    print(" Log Entering Enrich_Stared_Descriptions3", df_stared_descriptions.shape.index)
     for repo in stared_repos :
         repo = repo.replace("https://github.com/","")
         try:
-        #print("processiing", repo)
-        #print("processiing2", repo)
+            print(" Log processiing2", repo)
             dict_stared_descriptions[repo] = df_stared_descriptions.loc[repo].to_dict()
-            #print("Enrich_Stared_Descriptions" , df_stared_descriptions.loc[repo].to_dict())
-            #print("Enrich_Stared_Descriptions2", dict_stared_descriptions[repo])
+            print(" Log Enrich_Stared_Descriptions" , df_stared_descriptions.loc[repo].to_dict())
+            print(" Log Enrich_Stared_Descriptions2", dict_stared_descriptions[repo])
         except Exception:
             continue
   #  print("dict_stared_descriptions", dict_stared_descriptions)
@@ -274,6 +276,8 @@ def Enrich_Stared_Descriptions(stared_repos, df_stared_descriptions):
 # Main
 ####### NUEVO
 def Get_Stared_Repos(github_user,loc) :
+    print("Log Get_Stared_Repos")
+    print("Log Get_Stared_Repos", github_user, loc)
     stared_repos = []
     stared_tags  = {}
     dict_stared_descriptions = {}
@@ -323,16 +327,19 @@ def Get_Stared_Repos(github_user,loc) :
         #print ("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]), list(sorted_dict_repos)[-repo-1][1] )
         stared_repos.append("https://github.com/%s" % (list(sorted_dict_repos)[-repo-1][0]))
 
+    print((start - time.time()), "Before enrich Enrich_Stared_Descriptions", stared_repos)
+    print((start - time.time()), "Before enrich Enrich_Stared_Descriptions", loc.df_stared_descriptions)
+
     dict_stared_descriptions = Enrich_Stared_Descriptions(stared_repos, loc.df_stared_descriptions)
-    
+
     # Change df and reduce it
     df = loc.static_df.copy(deep=True)
 
     for column in all_repos_tags :
         df_reduced[column] = df[column]
-    
+
     print("df_reduced", df_reduced.shape)
-    
+
     for i in range(num_repos):
         tags_cloud = []
         #df        = loc.static_df.copy(deep=True)
@@ -345,7 +352,7 @@ def Get_Stared_Repos(github_user,loc) :
         #all_repos_tags.to_csv("kk-all_repos_tags.csv")
         df = pd.concat([df, all_repos_tags.iloc[i:i+1]])
         print("After concat i", i ,df.shape)
-        
+
         # calculate_distance_matrix
         df_dist = get_repos.Generate_Distance_Matrix(df_backup, df, repo_names)
         print((start - time.time(), "Generate_Distance_Matrix done"),df_backup.shape, df.shape , len(repo_names) )
@@ -380,5 +387,3 @@ def Get_Stared_Repos(github_user,loc) :
     return all_results
 
 # ('apex/up', 905), ('goreleaser/goreleaser', 916), ('tonybeltramelli/pix2code', 922), ('kubernetes/kompose', 941), ('google/python-fire', 951), ('cockroachdb/cockroach', 964), ('kailashahirwar/cheatsheets-ai', 970), ('moby/moby', 974), ('torvalds/linux', 991), ('zeit/hyper', 991), ('c-bata/go-prompt', 997), ('jlevy/the-art-of-command-line', 997), ('ansible/ansible-container', 1010), ('gravitational/teleport', 1014), ('requests/requests', 1037), ('localstack/localstack', 1043), ('google/grumpy', 1049), ('bcicen/ctop', 1062), ('serverless/serverless', 1083), ('golang/dep', 1089), ('dgraph-io/badger', 1108), ('avelino/awesome-go', 1118), ('prometheus/prometheus', 1137), ('kubernetes/kubernetes', 1158), ('openfaas/faas', 1158), ('cncf/landscape', 1160), ('froala/design-blocks', 1164), ('go-ego/riot', 1204), ('kubernetes/kops', 1204), ('mholt/caddy', 1210), ('aksakalli/gtop', 1212), ('spf13/cobra', 1233), ('open-guides/og-aws', 1252), ('envoyproxy/envoy', 1256), ('GoogleCloudPlatform/distroless', 1256), ('jwasham/coding-interview-university', 1264), ('pingcap/tidb', 1264), ('vahidk/EffectiveTensorflow', 1310), ('donnemartin/system-design-primer', 1314), ('kubernetes/minikube', 1327), ('tensorflow/tensorflow', 1348), ('aymericdamien/TensorFlow-Examples', 1419), ('GoogleChrome/puppeteer', 1504), ('mr-mig/every-programmer-should-know', 1590), ('istio/istio', 1665), ('ansible/awx', 1688)]
-
-
