@@ -42,7 +42,7 @@ def Load_User_Directory(df, num_users_to_read):
         github_user_list = os.listdir(USER_FILES_PATH)
     except:
         github_user_list = []
-        
+
     if num_users_to_read == -1 : num_users_to_read = len(github_user_list)
     #
     for i in range(num_users_to_read):
@@ -189,6 +189,7 @@ def Load_Initial_data():
     """
     # Load
     df_tags       = get_repos.Generate_Tag_Matrix(pd.DataFrame())
+    print(df_tags.columns)
     df            = pd.DataFrame(columns = df_tags.columns)
     df = Load_User_Directory(df, -1)
 
