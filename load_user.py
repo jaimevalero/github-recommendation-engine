@@ -189,10 +189,7 @@ def Load_Initial_data():
     """
     # Load
     df_tags       = get_repos.Generate_Tag_Matrix(pd.DataFrame())
-    print(df_tags.columns)
-    df = pd.DataFrame()
-    df.columns = df_tags.columns
-    #df            = pd.DataFrame(columns = df_tags.columns)
+    df            = pd.DataFrame(columns = df_tags.columns)
     df = Load_User_Directory(df, -1)
 
     my_file = Path("Users_Tag_Matrix.data")

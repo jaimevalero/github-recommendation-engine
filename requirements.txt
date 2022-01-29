@@ -9,7 +9,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
 numpy==1.22.0
-pandas==0.25.3
+pandas==1.4.0
 pathlib==1.0.1
 pyjq==2.3.1
 python-dateutil==2.8.1
