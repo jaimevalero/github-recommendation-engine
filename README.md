@@ -1,7 +1,7 @@
 # Github recomendation system 
   [![BCH compliance](https://bettercodehub.com/edge/badge/jaimevalero/github-recommendation-engine?branch=master)](https://bettercodehub.com/) 
 
-## Demo site https://github-recommendation.herokuapp.com/char/index.html?busqueda=calba
+## Demo site https://github-recommendation.herokuapp.com/char/index.html?busqueda=borja
 
 
 ![Demo site](https://github.com/jaimevalero/github-recommendation-engine/blob/master/views/img/webscreen_capture.gif)
