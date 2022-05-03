@@ -8,6 +8,7 @@ idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
+
 numpy==1.22.0
 pandas==1.4.0
 pathlib==1.0.1
