@@ -68,6 +68,9 @@ def default_view(view):
     template       = templateEnv.get_template( "char.html" )
 
     all_results = {}
+    print("default_view", busqueda)
+    print("default_view", loc)
+
     all_results = load_user.Get_Stared_Repos(busqueda,loc)
     print("all_results", all_results)
     try :
