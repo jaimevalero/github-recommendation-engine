@@ -1,6 +1,10 @@
 # Github recomendation system 
 
-Important note: This repo has been archived. The [reasons.](https://github.com/jaimevalero/github-recommendation-engine/pull/179#issuecomment-1688749564) here.
+
+# Important info!
+
+This repo has been **archived**. The [reasons here.](https://github.com/jaimevalero/github-recommendation-engine/pull/179#issuecomment-1688749564)
+
 
 ## Demo site https://github-recommendation.herokuapp.com/char/index.html?busqueda=borja
 
