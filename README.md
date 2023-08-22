@@ -1,5 +1,6 @@
 # Github recomendation system 
-  [![BCH compliance](https://bettercodehub.com/edge/badge/jaimevalero/github-recommendation-engine?branch=master)](https://bettercodehub.com/) 
+
+Important note: This repo has been archived. The [reasons.](https://github.com/jaimevalero/github-recommendation-engine/pull/179#issuecomment-1688749564) here.
 
 ## Demo site https://github-recommendation.herokuapp.com/char/index.html?busqueda=borja
 
