@@ -231,47 +231,32 @@ def Reduce_Tag_Ponder_Matrix(df,github_user,all_repos_tags):
     return df,all_repos_tags
 
 
-def Calculate_Nearest_Neighbours(df,github_user):
-    # Temp Dataframe
-    user = pd.DataFrame(index=df.index)
-    user["total"] = 0
-    # Substract the value of the user dimensions, for each columns
-    for column in df.columns :
-        df[column] -= df.loc[github_user][column]
-        # We calculate the euclidean distance, respect 0,0....,0, the github_user cordinates
-        user["total"] +=  (df[column] ** 2)
-    user["total"] = user["total"] ** 0.5
-    # Number of NNs
-    neighbours_number = round(2*df.shape[0]**0.5)+1
-    users = user["total"].sort_values().head(neighbours_number+1).tail(neighbours_number)
-    # The close to 0 the distance for a given user, the more weight for that user.
-    # We do that by : Weight(given_user) = Inverse(distance(github_user,given_user))
-    users = 1/users
-    # We list all the repos voted for this user, multiplied for the Weight for that user
-    dict_repos={}
-    for neighbour_user in users.index :
-        correlation_factor=users.loc[neighbour_user]
-        dict_repos=Get_User_Favorites(dict_repos, neighbour_user, correlation_factor)
+def Calculate_Nearest_Neighbours(df, github_user):
+    user_diff = df.sub(df.loc[github_user], axis=1)
+    user_squared_diff = user_diff ** 2
+    user_euclidean_distances = np.sqrt(user_squared_diff.sum(axis=1))
+    
+    neighbours_number = round(2 * df.shape[0] ** 0.5) + 1
+    users = user_euclidean_distances.nsmallest(neighbours_number + 1).nlargest(neighbours_number)
+    
+    users_weights = 1 / users
+    dict_repos = {}
+    
+    for neighbour_user, correlation_factor in zip(users.index, users_weights):
+        dict_repos = Get_User_Favorites(dict_repos, neighbour_user, correlation_factor)
+    
     sorted_dict_repos = sorted(dict_repos.items(), key=operator.itemgetter(1))
     return sorted_dict_repos
 
+
 def Enrich_Stared_Descriptions(stared_repos, df_stared_descriptions):
     dict_stared_descriptions = {}
-    print(" Log Entering Enrich_Stared_Descriptions")
-    print(" Log Entering Enrich_Stared_Descriptions2", stared_repos, df_stared_descriptions.shape)
-    print(" Log Entering Enrich_Stared_Descriptions3", df_stared_descriptions.shape.index)
-    for repo in stared_repos :
-        repo = repo.replace("https://github.com/","")
-        try:
-            print(" Log processiing2", repo)
+    for repo in stared_repos:
+        repo = repo.replace("https://github.com/", "")
+        if repo in df_stared_descriptions.index:
             dict_stared_descriptions[repo] = df_stared_descriptions.loc[repo].to_dict()
-            print(" Log Enrich_Stared_Descriptions" , df_stared_descriptions.loc[repo].to_dict())
-            print(" Log Enrich_Stared_Descriptions2", dict_stared_descriptions[repo])
-        except Exception:
-            continue
-  #  print("dict_stared_descriptions", dict_stared_descriptions)
-
     return dict_stared_descriptions
+
 
 # Main
 ####### NUEVO
